@@ -1,5 +1,5 @@
 name: zaojiangchong_project
-description: A new Flutter application.
+description: Flutter windows开发论文写作助手，后期考虑移植mac、linux.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.0+1  # 版本号管理
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -39,8 +39,8 @@ dev_dependencies:
   url_launcher: ^5.7.2 # url发射器
   get: ^3.23.1 # GetX状态管理+路由管理+依赖管理
   shared_preferences: ^0.5.12 # flutter 持久化插件
-  desktop_window: ^0.3.0 # window_size：屏幕尺寸插件
   bitsdojo_window: ^0.0.3
+  #  desktop_window: ^0.3.0 # window_size：屏幕尺寸插件
   # file_chooser：文件选择插件
   # kumi_popup_window: ^1.0.12： windows弹窗插件
   # flutter_menu：菜单栏设置
