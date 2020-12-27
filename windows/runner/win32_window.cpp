@@ -122,16 +122,16 @@ bool Win32Window::CreateAndShow(const std::wstring& title,
       Scale(size.width, scale_factor), Scale(size.height, scale_factor),
       nullptr, nullptr, GetModuleHandle(nullptr), this);
 
-  HWND m_hwnd = window;
-  int scrWidth, scrHeight;
-  RECT rect;
+  //HWND m_hwnd = window;
+  //int scrWidth, scrHeight;
+  //RECT rect;
 
-  scrWidth = GetSystemMetrics(SM_CXSCREEN); // Used to get the screen width and height
-  scrHeight = GetSystemMetrics(SM_CYSCREEN);
-  GetWindowRect(m_hwnd, &rect);
+  //scrWidth = GetSystemMetrics(SM_CXSCREEN); // Used to get the screen width and height
+  //scrHeight = GetSystemMetrics(SM_CYSCREEN);
+  //GetWindowRect(m_hwnd, &rect);
   //  between two parties windows
   // Always placed at the top  help => https://blog.csdn.net/weixin_30276935/article/details/99565176?utm_medium=distribute.pc_relevant_bbs_down.none-task--2~all~first_rank_v2~rank_v29-1.nonecase&depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task--2~all~first_rank_v2~rank_v29-1.nonecase
-  SetWindowPos(m_hwnd, HWND_TOPMOST, (scrWidth - rect.right) / 2, (scrHeight - rect.bottom) / 2, rect.right - rect.left, rect.bottom - rect.top, SWP_NOSIZE);
+  //SetWindowPos(m_hwnd, HWND_TOPMOST, (scrWidth - rect.right) / 2, (scrHeight - rect.bottom) / 2, rect.right - rect.left, rect.bottom - rect.top, SWP_NOSIZE);
   if (!window) {
     return false;
   }

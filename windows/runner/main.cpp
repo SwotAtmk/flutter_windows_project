@@ -1,5 +1,5 @@
 #include <bitsdojo_window/bitsdojo_window_plugin.h>
-auto bdw = bitsdojo_window_configure(BDW_CUSTOM_FRAME); // BDW_CUSTOM_FRAME:Remove the system default title bar;BDW_HIDE_ON_STARTUP:Initializes load hiding
+auto bdw = bitsdojo_window_configure(BDW_CUSTOM_FRAME|BDW_CUSTOM_FRAME); // BDW_CUSTOM_FRAME:Remove the system default title bar;BDW_HIDE_ON_STARTUP:Initializes load hiding
 #include <flutter/dart_project.h>
 #include <flutter/flutter_view_controller.h>
 #include <windows.h>
@@ -31,7 +31,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 
   FlutterWindow window(&run_loop, project);
 
-  Win32Window::Point origin(50, 50);
+  Win32Window::Point origin(0, 0);
   Win32Window::Size size(900, 500); //Default Settings for window width and height:(1280,720)
   if (!window.CreateAndShow(L"zaojiangchong_project", origin, size)) {
     return EXIT_FAILURE;

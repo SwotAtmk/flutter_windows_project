@@ -21,7 +21,7 @@ class WindowTitle extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.only(right: 15),
-            child: Text("卡密：123456******",style: TextStyle(color: Colors.black54,fontSize: 12),), // TODO:暂时填入默认值，后面从状态管理中获取
+            child: Text("卡密：123456******",style: TextStyle(color: Colors.black54,fontSize: 12,fontFamily: "SiyuanBold"),), // TODO:暂时填入默认值，后面从状态管理中获取
           )
         ],
     );
