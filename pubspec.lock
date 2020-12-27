@@ -120,13 +120,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.2"
-  desktop_window:
-    dependency: "direct dev"
-    description:
-      name: desktop_window
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.3.0"
   dio:
     dependency: "direct dev"
     description:

@@ -4,7 +4,6 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   bitsdojo_window
-  desktop_window
   url_launcher_windows
 )
 

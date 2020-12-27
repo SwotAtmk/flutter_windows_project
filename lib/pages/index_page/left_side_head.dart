@@ -38,7 +38,7 @@ class LeftSideHead extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top:5, bottom: 5),
       child: Center(
-        child: Text("轻松写作助手",style: TextStyle(fontSize: 20,color: Colors.white),),
+        child: Text("轻松写作助手",style: TextStyle(fontSize: 20,color: Colors.white,fontFamily: "Muyao"),),
       ),
     );
   }
