@@ -74,6 +74,10 @@
     /lib/test -> 测试文件及临时文件目录自己随便命名的
     /test -> flutter 单元测试目录
     /windows -> flutter windows 底层依赖目录，其中包含c++窗口程序及flutter相关注入。
+    /windows/runner -> windows 运行环境依赖
+    /windows/runner/main.cpp -> C++ windows 窗口入口文件
+    /windows/runner/win32_windows.cpp -> win32 api接口文件
+    /windows/runner/Runner.rc -> 项目配置文件，包括配置图标、版本号、应用信息等
     /pubspec.yaml -> 配置文件
     /README.md -> 项目说明文档
     
