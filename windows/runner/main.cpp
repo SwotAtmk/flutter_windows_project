@@ -32,7 +32,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   FlutterWindow window(&run_loop, project);
 
   Win32Window::Point origin(0, 0);
-  Win32Window::Size size(900, 500); //Default Settings for window width and height:(1280,720)
+  Win32Window::Size size(987, 598); //Default Settings for window width and height:(1280,720)
   if (!window.CreateAndShow(L"zaojiangchong_project", origin, size)) {
     return EXIT_FAILURE;
   }

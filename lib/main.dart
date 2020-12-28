@@ -10,7 +10,7 @@ import 'service/dio_service.dart';
   /// 初始化设置windows窗体
   doWhenWindowReady(() { // 必须在runApp后调用不然会出现透明屏的情况，内部异步通过管道与C++通信设置窗体
     var win = appWindow;
-    var initialSize = Size(900, 500);
+    var initialSize = Size(987, 598);
     win.minSize = initialSize; // 设置窗体最小大小
     win.size = initialSize; // 初始化设置窗体大小
     win.alignment = Alignment.center; // 设置窗体居中
