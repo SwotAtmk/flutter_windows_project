@@ -42,19 +42,21 @@ class _IndividualComponentsState extends State<IndividualComponents> {
         });
       },
       child: Container(
+        height: 40,
         decoration: BoxDecoration(
             color: (widget.index == currentIndex)?Color(0xff206dda):Color(0xff153872),
             borderRadius: BorderRadius.all(Radius.circular(4))
         ),
-        child: Center(
-          child: ListTile(
-            leading: Container(
-              margin: EdgeInsets.only(left: 16),
-              child: widget.icon,
-            ),
-            title: Text(widget.title,style: TextStyle(color: Colors.white),),
-          ),
-        ),
+        child:Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            widget.icon,
+            Container(
+              margin: EdgeInsets.only(left: 20),
+              child: Text(widget.title,style: TextStyle(color: Colors.white),),
+            )
+          ],
+        )
       ),
     );
   }

@@ -8,8 +8,6 @@ class MainRoute {
 
   static List<GetPage> routeArray = [
     GetPage(name: "/", page: () => IndexPage(), binding: JiangchongBinding()),
-    GetPage(name: "/testPage", page: () => TestPage()),
-    GetPage(name: "/toNameRouteTest", page: () => ToNameRouteTest()),
 
   ];
 }
