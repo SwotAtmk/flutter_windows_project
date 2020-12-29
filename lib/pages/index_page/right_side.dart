@@ -13,7 +13,7 @@ class RightSide extends StatelessWidget {
             child: Column(
                 children: [
                   SizedBox(
-                    height: 40,
+                    height: 48,
                     child: Row(
                         children: [
                           Expanded(child:

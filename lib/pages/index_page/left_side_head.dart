@@ -9,7 +9,7 @@ class LeftSideHead extends StatelessWidget {
         children: [
           _logo(),
           _title(),
-          Divider(color: Colors.white,thickness: 1,indent: 20,endIndent: 20,)
+          Divider(color: Color(0xffc9e5fd),thickness: 1,indent: 20,endIndent: 20,)
         ],
       ),
 

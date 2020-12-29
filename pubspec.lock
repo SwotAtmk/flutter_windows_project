@@ -248,6 +248,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.2"
+  kumi_popup_window:
+    dependency: "direct dev"
+    description:
+      name: kumi_popup_window
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.12"
   logging:
     dependency: transitive
     description:
@@ -590,7 +597,7 @@ packages:
     source: hosted
     version: "2.1.2"
   win32:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: win32
       url: "https://pub.flutter-io.cn"

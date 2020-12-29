@@ -40,6 +40,8 @@ dev_dependencies:
   get: ^3.23.1 # GetX状态管理+路由管理+依赖管理
   shared_preferences: ^0.5.12 # flutter 持久化插件
   bitsdojo_window: ^0.0.3
+  win32: ^1.7.4 # win32接口
+  kumi_popup_window: ^1.0.12 # 弹窗
   #  desktop_window: ^0.3.0 # window_size：屏幕尺寸插件
   # file_chooser：文件选择插件
   # kumi_popup_window: ^1.0.12： windows弹窗插件
