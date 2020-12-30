@@ -80,6 +80,8 @@
     /windows/runner/Runner.rc -> 项目配置文件，包括配置图标、版本号、应用信息等
     /pubspec.yaml -> 配置文件
     /README.md -> 项目说明文档
+    /packaged/innosetup-6.1.2.exe -> inno软件打包安装工具
+    /packaged/ChinesSimplified.isl -> 打包软件中文简体
     
 # 注意：
     C++代码中最好不要出现中文注释，不然可能会出现Unicode编码错误。
