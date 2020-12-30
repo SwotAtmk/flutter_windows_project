@@ -9,12 +9,7 @@ class LeftSideBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Divider(
-          color: Color(0xffc9e5fd),
-          thickness: 1,
-          indent: 20,
-          endIndent: 20,
-        ),
+        Divider(color: Color(0xffc9e5fd),height: 0.5, thickness: 1, indent: 10, endIndent: 10,),
         Container(
           width: 140,
           height: 70,
@@ -22,7 +17,7 @@ class LeftSideBottom extends StatelessWidget {
           child: GridView.builder(
             scrollDirection: Axis.vertical,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: 6,
+            itemCount: checkSystemList.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 10,

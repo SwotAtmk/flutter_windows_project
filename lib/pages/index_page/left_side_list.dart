@@ -53,7 +53,7 @@ class _IndividualComponentsState extends State<IndividualComponents> {
             widget.icon,
             Container(
               margin: EdgeInsets.only(left: 20),
-              child: Text(widget.title,style: TextStyle(color: Colors.white),),
+              child: Text(widget.title,style: TextStyle(color: Colors.white,fontSize: 14),),
             )
           ],
         )

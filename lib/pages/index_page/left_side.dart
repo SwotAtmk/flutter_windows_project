@@ -10,10 +10,9 @@ class LeftSide extends StatelessWidget {
     return SizedBox(
         width: 182,
         child: Container(
-            color: Color.fromRGBO(21, 56, 114, 1),
+            color: Color(0xff153872),
             child: Column(
               children: [
-                WindowTitleBarBox(child: MoveWindow()),
                 Expanded(child: Column(
                   children: [
                     LeftSideHead(),

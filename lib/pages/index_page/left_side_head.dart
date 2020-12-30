@@ -9,7 +9,7 @@ class LeftSideHead extends StatelessWidget {
         children: [
           _logo(),
           _title(),
-          Divider(color: Color(0xffc9e5fd),thickness: 1,indent: 20,endIndent: 20,)
+          Divider(color: Color(0xffc9e5fd),height: 0.5,thickness: 1,indent: 10,endIndent: 10,)
         ],
       ),
 
@@ -18,7 +18,7 @@ class LeftSideHead extends StatelessWidget {
 
   Widget _logo(){
     return Container(
-      height: 60,
+      margin: EdgeInsets.only(top: 20,bottom: 20),
       child: Center(
         child: Container(
           width: 42,

@@ -55,11 +55,11 @@ class WindowButtons extends StatelessWidget {
             height: 20,
             margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child:Center(
-              child: SvgPicture.string(_maximizeIcon, color: Colors.black,width: 12,height: 12,),
+              child: SvgPicture.string(_maximizeIcon, color: Colors.black45,width: 12,height: 12,),
             ),
           ),
           onTap: () {
-            appWindow.maximizeOrRestore(); // 窗口最大化
+            // appWindow.maximizeOrRestore(); // todo:窗口最大化暂时关闭
           },
         ),
         GestureDetector(

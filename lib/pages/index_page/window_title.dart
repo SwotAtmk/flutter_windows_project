@@ -48,7 +48,7 @@ class WindowTitle extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 5),
                     child: Text(
-                      "剩余30天",
+                      "剩余30天", /// TODO:状态管理获取，非真实数据
                       style: TextStyle(color: Colors.white,fontSize: 13),
                     ),
                   )
