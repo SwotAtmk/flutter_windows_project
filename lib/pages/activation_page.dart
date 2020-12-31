@@ -1,5 +1,6 @@
 /// 激活页
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 
 class ActivationPage extends StatelessWidget {
   @override
@@ -31,22 +32,30 @@ class ActivationPage extends StatelessWidget {
                   Container(
                     width: 289,
                     height: 38,
+                    decoration: BoxDecoration(
+                      color: Color(0xfff6f6f6),
+                      borderRadius: BorderRadius.all(Radius.circular(19))
+                    ),
                     margin: EdgeInsets.only(bottom: 20),
                     child: TextField(
                       controller: editController,
                       style: TextStyle(
                         fontSize: 16,
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z0-9]")),//只允许输入字母和数字
+                      ],
                       decoration: InputDecoration(
                         hintText: '请输入卡密',
-                        fillColor: Color(0xff4296ff),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(19),
                           ),
+                          borderSide: BorderSide.none
                         ),
                         contentPadding: EdgeInsets.only(
                           top: 0,
+                          left: 26,
                           bottom: 0,
                         ),
                       ),
@@ -72,14 +81,14 @@ class ActivationPage extends StatelessWidget {
                  Container(
                    width: 200,
                    child:  Row(children: [
-                     GestureDetector(
+                     InkWell(
                        onTap: (){
                          print("去购买");
                        },
                        child: Text("去购买",style: TextStyle(color: Color(0xff4296ff), decoration: TextDecoration.underline,),),
                      ),
                      Spacer(),
-                     GestureDetector(
+                     InkWell(
                        onTap: (){
                          print("忘记卡密？");
                        },

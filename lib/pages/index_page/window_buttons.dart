@@ -1,6 +1,8 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+// ignore: implementation_imports
+import 'package:bitsdojo_window/src/widgets/mouse_state_builder.dart';
 
 const _closeIcon = """
 <svg 
@@ -36,16 +38,18 @@ class WindowButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        GestureDetector(
-          child: Container(
-            width: 20,
-            height: 20,
-            margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-            child:Center(
-              child: SvgPicture.string(_minimizeIcon, color: Colors.black,width: 12,height: 12,),
-            ),
-          ),
-          onTap: () {
+        MouseStateBuilder(
+          builder:(context, mouseState){
+            return Container(
+              width: 20,
+              height: 20,
+              margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child:Center(
+                child: SvgPicture.string(_minimizeIcon, color: (mouseState.isMouseOver|| mouseState.isMouseDown)?Colors.black45:Colors.black,width: 12,height: 12,),
+              ),
+            );
+          },
+          onPressed: (){
             appWindow.minimize(); // 窗口最小化
           },
         ),
@@ -62,16 +66,18 @@ class WindowButtons extends StatelessWidget {
             // appWindow.maximizeOrRestore(); // todo:窗口最大化暂时关闭
           },
         ),
-        GestureDetector(
-          child: Container(
-            width: 20,
-            height: 20,
-            margin: EdgeInsets.fromLTRB(8, 0, 18, 0),
-            child:Center(
-              child: SvgPicture.string(_closeIcon, color: Colors.black,width: 12,height: 12,),
-            ),
-          ),
-          onTap: () {
+        MouseStateBuilder(
+          builder: (BuildContext context, MouseState mouseState) {
+              return Container(
+                width: 20,
+                height: 20,
+                margin: EdgeInsets.fromLTRB(8, 0, 18, 0),
+                child:Center(
+                  child: SvgPicture.string(_closeIcon, color: (mouseState.isMouseOver|| mouseState.isMouseDown)?Colors.red:Colors.black,width: 12,height: 12,),
+                ),
+              );
+          },
+          onPressed: (){
             appWindow.close(); // 窗口关闭
           },
         ),
