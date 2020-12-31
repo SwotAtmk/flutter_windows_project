@@ -10,29 +10,53 @@ class PaperCheckPage extends StatelessWidget {
       children: [
         Container(
             margin: EdgeInsets.fromLTRB(30, 20, 30, 30),
-            child: GridView.builder(
-                itemCount: checkSystemList.length,
-                scrollDirection: Axis.vertical,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 40,
-                  crossAxisSpacing: 40,
-                  childAspectRatio: 10 / 9,
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(bottom: 20),
+                  // decoration: BoxDecoration(color: Color(0xfff6f9f9)),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "文章查重",
+                    style: TextStyle(fontSize: 18),
+                  ),
                 ),
-                itemBuilder: (context, index) {
-                  return _itemWidget(checkSystemList[index]["name"],
-                      explain:
+                GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: checkSystemList.length,
+                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 40,
+                      crossAxisSpacing: 40,
+                      childAspectRatio: 10 / 9,
+                    ),
+                    itemBuilder: (context, index) {
+                      return _itemWidget(checkSystemList[index]["name"],
+                          explain:
                           "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内测试内容测试内容测试内容",
-                      jumpLink: checkSystemList[index]["url"]);
-                })),
-        Positioned(child: Container(
-          color: Color.fromRGBO(233, 246, 253, 1),
-          alignment: Alignment.center,
-          child: Text("广告",style: TextStyle(fontSize: 12,color: Color.fromRGBO(69, 141, 244, 1)),),
-        ),right: 0,bottom: 0,width: 38,height: 16,)
-      ],
+                          jumpLink: checkSystemList[index]["url"]);
+                    }),
 
+              ],
+            )),
+        Positioned(
+          child: Container(
+            color: Color.fromRGBO(233, 246, 253, 1),
+            alignment: Alignment.center,
+            child: Text(
+              "广告",
+              style: TextStyle(
+                  fontSize: 12, color: Color.fromRGBO(69, 141, 244, 1)),
+            ),
+          ),
+          right: 0,
+          bottom: 0,
+          width: 38,
+          height: 16,
+        )
+      ],
     );
   }
 

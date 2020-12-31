@@ -3,6 +3,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'window_buttons.dart';
 import 'window_title.dart';
 import '../paper_check_page.dart';
+import '../activation_page.dart';
 
 class RightSide extends StatelessWidget {
   @override
@@ -34,24 +35,16 @@ class RightSide extends StatelessWidget {
                     WindowButtons(),
                 ]),
               ),
-              Container(
-                padding: EdgeInsets.only(left: 30,top: 20),
-                decoration: BoxDecoration(
-                    color: Color(0xfff6f9f9) ///Color(0xfff6f9f9)
-                ),
-                alignment: Alignment.centerLeft,
-                child: Text("文章查重",style: TextStyle(fontSize: 18),),
-              ),
               Expanded(child:
                 Container(
                   decoration: BoxDecoration(
                       color: Color(0xfff6f9f9) ///Color(0xfff6f9f9)
                   ),
-                  child: PaperCheckPage()
+                  child:  ActivationPage() /// TODO:右侧页面，后续改状态控制页面的显示; PaperCheckPage():文章查重页、CorePage():核心功能降重页、ActivationPage():软件激活页面。
                 )
               )
             ])
         )
     );
   }
-}
+ }
