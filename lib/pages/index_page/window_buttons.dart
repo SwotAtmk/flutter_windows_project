@@ -40,12 +40,14 @@ class WindowButtons extends StatelessWidget {
       children: [
         MouseStateBuilder(
           builder:(context, mouseState){
+            bool isOverOrDown = false;
+            if(mouseState.isMouseOver|| mouseState.isMouseDown) isOverOrDown = true;
             return Container(
               width: 20,
               height: 20,
               margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child:Center(
-                child: SvgPicture.string(_minimizeIcon, color: (mouseState.isMouseOver|| mouseState.isMouseDown)?Colors.black45:Colors.black,width: 12,height: 12,),
+                child: SvgPicture.string(_minimizeIcon, color: isOverOrDown?Colors.black45:Colors.black,width: isOverOrDown?16:12,height: isOverOrDown?16:12,),
               ),
             );
           },
@@ -68,12 +70,14 @@ class WindowButtons extends StatelessWidget {
         ),
         MouseStateBuilder(
           builder: (BuildContext context, MouseState mouseState) {
+             bool isOverOrDown = false;
+             if(mouseState.isMouseOver|| mouseState.isMouseDown) isOverOrDown = true;
               return Container(
                 width: 20,
                 height: 20,
                 margin: EdgeInsets.fromLTRB(8, 0, 18, 0),
                 child:Center(
-                  child: SvgPicture.string(_closeIcon, color: (mouseState.isMouseOver|| mouseState.isMouseDown)?Colors.red:Colors.black,width: 12,height: 12,),
+                  child: SvgPicture.string(_closeIcon, color: isOverOrDown?Colors.red:Colors.black,width: isOverOrDown?16:12,height: isOverOrDown?16:12,),
                 ),
               );
           },

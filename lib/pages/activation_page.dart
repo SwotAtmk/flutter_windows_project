@@ -112,7 +112,7 @@ class ActivationPage extends StatelessWidget {
             margin: EdgeInsets.only(top: 20,bottom: 20),
             alignment: Alignment.center,
             child: Text("需要使用者参考系统建议酌情编辑，目前没有任何一个智能系统可以一步到位达到您满意，请理性使用"
-              ,style: TextStyle(color: Color(0xffbdbdbd),fontSize: 10),
+              ,style: TextStyle(color: Color(0xffbdbdbd),fontSize: 12),
             ),
           )
         ],
