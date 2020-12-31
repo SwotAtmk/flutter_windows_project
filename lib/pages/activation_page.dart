@@ -18,91 +18,96 @@ class ActivationPage extends StatelessWidget {
           Row(
             children: [
               Container(
-                height: 200,
-                width: 200,
+                margin: EdgeInsets.only(left: 50,top: 70),
+                height: 280,
+                width: 280,
                 color: Colors.green,
                 ///child: , 后面设置图片
               ),
-              Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 60,bottom: 40),
-                    child: Text("Hello，欢迎使用",style: TextStyle(color: Color(0xff4296ff),fontSize: 28,fontWeight: FontWeight.w700),),
-                  ),
-                  Container(
-                    width: 289,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: Color(0xfff6f6f6),
-                      borderRadius: BorderRadius.all(Radius.circular(19))
+              Container(
+                margin: EdgeInsets.only(left: 50),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      margin: EdgeInsets.only(top: 60,left: 0,bottom: 40),
+                      child: Text("Hello，欢迎使用",style: TextStyle(color: Color(0xff4296ff),fontSize: 28,fontWeight: FontWeight.w700),),
                     ),
-                    margin: EdgeInsets.only(bottom: 20),
-                    child: TextField(
-                      controller: editController,
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                      inputFormatters: [
-                        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z0-9]")),//只允许输入字母和数字
-                      ],
-                      decoration: InputDecoration(
-                        hintText: '请输入卡密',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(19),
-                          ),
-                          borderSide: BorderSide.none
-                        ),
-                        contentPadding: EdgeInsets.only(
-                          top: 0,
-                          left: 26,
-                          bottom: 0,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  InkWell(
-                    onTap: (){
-                      print("激活软件");
-                    },
-                    child: Container(
-                      height: 38,
+                    Container(
                       width: 289,
-                      alignment: Alignment.center,
+                      height: 38,
                       decoration: BoxDecoration(
-                        color:  Color(0xff4296ff),
+                        color: Color(0xfff6f6f6),
                         borderRadius: BorderRadius.all(Radius.circular(19))
                       ),
-                      child: Text("激活",style: TextStyle(color: Colors.white,fontSize: 16),),
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: TextField(
+                        controller: editController,
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp("[a-zA-Z0-9]")),//只允许输入字母和数字
+                        ],
+                        decoration: InputDecoration(
+                          hintText: '请输入卡密',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(19),
+                            ),
+                            borderSide: BorderSide.none
+                          ),
+                          contentPadding: EdgeInsets.only(
+                            left: 26,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
 
-                 Container(
-                   width: 200,
-                   child:  Row(children: [
-                     InkWell(
-                       onTap: (){
-                         print("去购买");
-                       },
-                       child: Text("去购买",style: TextStyle(color: Color(0xff4296ff), decoration: TextDecoration.underline,),),
-                     ),
-                     Spacer(),
-                     InkWell(
-                       onTap: (){
-                         print("忘记卡密？");
-                       },
-                       child: Text("忘记卡密？",style: TextStyle(color: Color(0xff4296ff), ),),
-                     ),
-                   ],
-                   ),
-                 )
+                    InkWell(
+                      onTap: (){
+                        print("激活软件");
+                      },
+                      child: Container(
+                        height: 38,
+                        width: 289,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color:  Color(0xff4296ff),
+                          borderRadius: BorderRadius.all(Radius.circular(19))
+                        ),
+                        child: Text("激活",style: TextStyle(color: Colors.white,fontSize: 16),),
+                      ),
+                    ),
 
-                ],
+                   Container(
+                     width: 200,
+                     margin: EdgeInsets.only(top: 20),
+                     child:  Row(children: [
+                       InkWell(
+                         onTap: (){
+                           print("去购买");
+                         },
+                         child: Text("去购买",style: TextStyle(color: Color(0xff4296ff), decoration: TextDecoration.underline,),),
+                       ),
+                       Spacer(),
+                       InkWell(
+                         onTap: (){
+                           print("忘记卡密？");
+                         },
+                         child: Text("忘记卡密？",style: TextStyle(color: Color(0xff4296ff), ),),
+                       ),
+                     ],
+                     ),
+                   )
+
+                  ],
+                ),
               )
 
             ],
           ),
+          Spacer(),
           Container(
             margin: EdgeInsets.only(top: 20,bottom: 20),
             alignment: Alignment.center,
