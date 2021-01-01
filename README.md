@@ -73,7 +73,7 @@
         软件更新插件，支持全平台
     21. flutter_update_dialog
         更新提示弹窗
-    22. platform_info
+    22. package_info_plus
         应用信息
         
         
