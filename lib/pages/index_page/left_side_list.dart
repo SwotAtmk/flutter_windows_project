@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../controller/pages_controller.dart';
 // ignore: must_be_immutable
 class LeftSideList extends StatelessWidget {
-  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class LeftSideList extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class IndividualComponents extends StatefulWidget {
+class IndividualComponents extends StatelessWidget {
   Icon icon;
   String title;
   int index;
@@ -26,38 +27,32 @@ class IndividualComponents extends StatefulWidget {
   IndividualComponents(this.icon,this.title,this.index);
 
   @override
-  _IndividualComponentsState createState() => _IndividualComponentsState();
-}
-
-class _IndividualComponentsState extends State<IndividualComponents> {
-  int currentIndex = 0;
-  Color backColor;
-
-  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        setState(() {
-          currentIndex = widget.index;
-        });
+        Get.find<PagesController>().changePage(index);
       },
-      child: Container(
-        height: 40,
-        decoration: BoxDecoration(
-            color: (widget.index == currentIndex)?Color(0xff206dda):Color(0xff153872),
-            borderRadius: BorderRadius.all(Radius.circular(4))
-        ),
-        child:Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            widget.icon,
-            Container(
-              margin: EdgeInsets.only(left: 20),
-              child: Text(widget.title,style: TextStyle(color: Colors.white,fontSize: 14),),
+      child: GetBuilder<PagesController>(builder: (controller) {
+        return Container(
+            height: 40,
+            decoration: BoxDecoration(
+                color: (index == controller.currentPageIndex)?Color(0xff206dda):Color(0xff153872),
+                borderRadius: BorderRadius.all(Radius.circular(4))
+            ),
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                icon,
+                Container(
+                  margin: EdgeInsets.only(left: 20),
+                  child: Text(title,style: TextStyle(color: Colors.white,fontSize: 14),),
+                )
+              ],
             )
-          ],
-        )
-      ),
+        );
+      },
+
+      )
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:zaojiangchong_project/controller/pages_controller.dart';
 import 'package:zaojiangchong_project/routes/main_route.dart';
 import 'package:get/get.dart';
 import 'service/dio_service.dart';

@@ -51,6 +51,7 @@ class ActivationPage extends StatelessWidget {
                         ],
                         decoration: InputDecoration(
                           hintText: '请输入卡密',
+                          hintStyle: TextStyle(color: Colors.grey),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(19),
