@@ -90,7 +90,7 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.taowenkeji" "\0"
-            VALUE "FileDescription", "A new Flutter application." "\0"
+            VALUE "FileDescription", "Essay writing tool." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "zaojiangchong_project" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2020 com.taowenkeji. All rights reserved." "\0"
