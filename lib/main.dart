@@ -3,6 +3,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:zaojiangchong_project/routes/main_route.dart';
 import 'package:get/get.dart';
 import 'service/service_register.dart' show DioService;
+import 'package:bot_toast/bot_toast.dart';
 
  Future main() async {
   await initServices(); /// 初始化服务
@@ -33,6 +34,8 @@ class MyApp extends StatelessWidget {
         initialRoute: "/",
         enableLog: true,
         title: "轻松写作助手",
+      builder: BotToastInit(),
+      navigatorObservers: [BotToastNavigatorObserver()],
     );
   }
 }

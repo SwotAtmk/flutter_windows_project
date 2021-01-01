@@ -4,8 +4,11 @@ import 'package:win32/win32.dart';
 import 'dart:ffi';
 import '../service/service_register.dart' show DioService;
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:flutter_update_dialog/flutter_update_dialog.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 class CorePage extends StatelessWidget {
+  UpdateDialog dialog;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,6 +31,23 @@ class CorePage extends StatelessWidget {
               print(packageInfo.version);
             },
             child: Text("获取应用信息"),
+          ),
+          InkWell(
+            onTap: () async {
+              UpdateDialog.showUpdate(context,
+                  title: "是否升级到4.1.4版本？",
+                  updateContent: "新版本大小:2.0M\n1.xxxxxxx\n2.xxxxxxx\n3.xxxxxxx",
+                  onUpdate: (){
+                    print("去更新");
+                  });
+            },
+            child: Text("更新弹出框"),
+          ),
+          InkWell(
+            onTap: (){
+              BotToast.showText(text:"测试内容测试内容测试内容");
+            },
+            child: Text("提示框测试"),
           )
         ],
       )

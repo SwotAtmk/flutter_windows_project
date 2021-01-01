@@ -41,8 +41,9 @@ dev_dependencies:
   shared_preferences: ^0.5.12 # flutter 持久化插件
   bitsdojo_window: ^0.0.3 # windows窗口控制
   win32: ^1.7.4 # win32接口
-  kumi_popup_window: ^1.0.12 # 弹窗插件
   package_info_plus: ^0.6.3 # 获取应用信息
+  flutter_update_dialog: ^1.0.0 # 更新弹出框
+  bot_toast: ^3.0.5 # 提示
 
   #  desktop_window: ^0.3.0 # window_size：屏幕尺寸插件
   # file_chooser：文件选择插件
@@ -62,9 +63,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+     - assets/image/bg_update_top.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
