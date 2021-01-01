@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'service/service_register.dart' show DioService;
 import 'package:bot_toast/bot_toast.dart';
 
- Future main() async {
+Future main() async {
   await initServices(); /// 初始化服务
   runApp(MyApp());
   /// 初始化设置windows窗体
@@ -20,7 +20,7 @@ import 'package:bot_toast/bot_toast.dart';
   });
 }
 
-void initServices() async {
+Future initServices() async {
   await Get.putAsync(() => DioService().init()); /// 初始化Dio服务
 }
 
@@ -29,11 +29,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        getPages: MainRoute.routeArray,
-        initialRoute: "/",
-        enableLog: true,
-        title: "轻松写作助手",
+      debugShowCheckedModeBanner: false,
+      getPages: MainRoute.routeArray,
+      initialRoute: "/",
+      enableLog: true,
+      title: "轻松写作助手",
       builder: BotToastInit(),
       navigatorObservers: [BotToastNavigatorObserver()],
     );

@@ -7,6 +7,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter_update_dialog/flutter_update_dialog.dart';
 import 'package:bot_toast/bot_toast.dart';
 
+// ignore: must_be_immutable
 class CorePage extends StatelessWidget {
   UpdateDialog dialog;
   @override
@@ -45,7 +46,7 @@ class CorePage extends StatelessWidget {
           ),
           InkWell(
             onTap: (){
-              BotToast.showText(text:"测试内容测试内容测试内容");
+              BotToast.showText(text:"测试内容测试内容测试内容",align: Alignment(0.3,0.8));
             },
             child: Text("提示框测试"),
           )
