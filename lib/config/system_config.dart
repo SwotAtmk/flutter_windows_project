@@ -1,5 +1,4 @@
 /// 系统配置
-///
 
 
 const  List<Map<String, String>> checkSystemList = [

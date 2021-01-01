@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controller/pages_controller.dart';
+import '../../controller/controller_register.dart' show PagesController;
 // ignore: must_be_immutable
 class LeftSideList extends StatelessWidget {
 

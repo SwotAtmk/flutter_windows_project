@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../config/system_config.dart';
-import '../service/launch_url_service.dart';
+import '../service/service_register.dart' show LaunchUrlService;
 
 /// 文章查重页
 class PaperCheckPage extends StatelessWidget {

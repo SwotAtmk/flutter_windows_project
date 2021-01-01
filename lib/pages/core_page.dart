@@ -1,5 +1,4 @@
 /// 主要降重功能页
-///
 import 'package:flutter/material.dart';
 
 class CorePage extends StatelessWidget {

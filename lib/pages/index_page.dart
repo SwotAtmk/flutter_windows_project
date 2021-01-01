@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'index_page/left_side.dart';
-import 'index_page/right_side.dart';
+import 'pages_register.dart' show LeftSide,RightSide;
 
 // ignore: must_be_immutable
 class IndexPage extends StatelessWidget {

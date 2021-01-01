@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'left_side_head.dart';
-import 'left_side_list.dart';
-import 'left_side_bottom.dart';
+import '../pages_register.dart' show LeftSideHead,LeftSideBottom,LeftSideList;
 
 class LeftSide extends StatelessWidget {
   @override

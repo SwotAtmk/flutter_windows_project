@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../pages/paper_check_page.dart';
-import '../pages/activation_page.dart';
-import '../pages/core_page.dart';
+import '../pages/pages_register.dart' show CorePage,PaperCheckPage,ActivationPage;
 
 class PagesController extends GetxController
 {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../service/launch_url_service.dart';
+import '../../service/service_register.dart' show LaunchUrlService;
 import '../../config/system_config.dart';
 
 // ignore: must_be_immutable

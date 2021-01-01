@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../binding/jiangchong_binding.dart';
-import 'pages_register.dart';
+import '../pages/pages_register.dart';
 
 class MainRoute {
 
