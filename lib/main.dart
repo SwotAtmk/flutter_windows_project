@@ -22,7 +22,7 @@ Future main() async {
 
 Future initServices() async {
   await Get.putAsync(() => DioService().init()); /// 初始化Dio服务
-  await Get.putAsync(() => ToastUtilsService().init(0.3,0.8)); /// 初始化提示框服务
+  await Get.putAsync(() => ToastUtilsService().init(0.0,0.8)); /// 初始化提示框服务
 }
 
 

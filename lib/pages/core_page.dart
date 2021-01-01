@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 // ignore: must_be_immutable
 class CorePage extends StatelessWidget {
   UpdateDialog dialog;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,12 +36,6 @@ class CorePage extends StatelessWidget {
           ),
           InkWell(
             onTap: () async {
-              // UpdateDialog.showUpdate(context,
-              //     title: "是否升级到4.1.4版本？",
-              //     updateContent: "新版本大小:2.0M\n1.xxxxxxx\n2.xxxxxxx\n3.xxxxxxx",
-              //     onUpdate: (){
-              //       print("去更新");
-              //     });
               dialog = UpdateDialog.showUpdate(context,
                   width: 250,
                   title: "是否升级到4.1.4版本？",
@@ -48,7 +43,7 @@ class CorePage extends StatelessWidget {
                   titleTextSize: 14,
                   contentTextSize: 12,
                   buttonTextSize: 12,
-                  topImage: Image.asset('assets/bg_update_top.png'),
+                  topImage: Image.asset('assets/images/bg_update_top.png'),
                   extraHeight: 5,
                   radius: 8,
                   themeColor: Color(0xFFFFAC5D),
