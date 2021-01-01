@@ -35,6 +35,7 @@ class IndividualComponents extends StatelessWidget {
       child: GetBuilder<PagesController>(builder: (controller) {
         return Container(
             height: 40,
+            margin: EdgeInsets.only(top:10),
             decoration: BoxDecoration(
                 color: (index == controller.currentPageIndex)?Color(0xff206dda):Color(0xff153872),
                 borderRadius: BorderRadius.all(Radius.circular(4))
