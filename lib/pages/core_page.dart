@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:win32/win32.dart';
 import 'dart:ffi';
-import '../service/service_register.dart' show DioService;
+import '../service/service_register.dart' show DioService,ToastUtilsService;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter_update_dialog/flutter_update_dialog.dart';
-import 'package:bot_toast/bot_toast.dart';
+import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class CorePage extends StatelessWidget {
@@ -35,18 +35,41 @@ class CorePage extends StatelessWidget {
           ),
           InkWell(
             onTap: () async {
-              UpdateDialog.showUpdate(context,
+              // UpdateDialog.showUpdate(context,
+              //     title: "是否升级到4.1.4版本？",
+              //     updateContent: "新版本大小:2.0M\n1.xxxxxxx\n2.xxxxxxx\n3.xxxxxxx",
+              //     onUpdate: (){
+              //       print("去更新");
+              //     });
+              dialog = UpdateDialog.showUpdate(context,
+                  width: 250,
                   title: "是否升级到4.1.4版本？",
                   updateContent: "新版本大小:2.0M\n1.xxxxxxx\n2.xxxxxxx\n3.xxxxxxx",
+                  titleTextSize: 14,
+                  contentTextSize: 12,
+                  buttonTextSize: 12,
+                  topImage: Image.asset('assets/bg_update_top.png'),
+                  extraHeight: 5,
+                  radius: 8,
+                  themeColor: Color(0xFFFFAC5D),
+                  progressBackgroundColor: Color(0x5AFFAC5D),
+                  isForce: true,
+                  updateButtonText: '升级',
+                  ignoreButtonText: '忽略此版本',
+                  enableIgnore: true, onIgnore: () {
+                    Get.find<ToastUtilsService>().showText("忽略");
+                    dialog.dismiss();
+                  },
                   onUpdate: (){
-                    print("去更新");
+                    print("去更新 -->  执行更新操作!");
+                    dialog.dismiss();
                   });
             },
             child: Text("更新弹出框"),
           ),
           InkWell(
             onTap: (){
-              BotToast.showText(text:"测试内容测试内容测试内容",align: Alignment(0.3,0.8));
+              Get.find<ToastUtilsService>().showText("测试内容测试内容测试内容");
             },
             child: Text("提示框测试"),
           )

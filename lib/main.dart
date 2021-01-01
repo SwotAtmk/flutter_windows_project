@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:zaojiangchong_project/routes/main_route.dart';
 import 'package:get/get.dart';
-import 'service/service_register.dart' show DioService;
+import 'service/service_register.dart' show DioService,ToastUtilsService;
 import 'package:bot_toast/bot_toast.dart';
 
 Future main() async {
@@ -22,6 +22,7 @@ Future main() async {
 
 Future initServices() async {
   await Get.putAsync(() => DioService().init()); /// 初始化Dio服务
+  await Get.putAsync(() => ToastUtilsService().init(0.3,0.8)); /// 初始化提示框服务
 }
 
 
