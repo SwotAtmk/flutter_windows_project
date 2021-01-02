@@ -31,7 +31,7 @@ class UpdateApplicationService {
     if (comparisonVersion(packageInfo.version, info["version"])) {
 
       print("新版本更新");
-      // showUpdateWidget(info, context);
+      showUpdateWidget(info, context);
     } else {
 
       print("无新版本更新");
