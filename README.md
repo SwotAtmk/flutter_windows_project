@@ -79,13 +79,14 @@
         
 ## 项目目录结构说明
     /android -> 这个目录主要是开发安卓用的，现在暂时用不上，可以说是可有可无，强行将项目运行在安卓上会出现意想不到的异常。
-    /assets -> 静态文件存放目录，其中用到的文件需在pubspec.yaml注册使用
+    /iod -> 同上所述，Ios依赖
+    /assets -> 静态资源文件存放目录，其中用到的文件需在pubspec.yaml注册使用
     /build -> flutter build生成目录，为flutter程序运行时构建的临时目录
-    /iod -> 同上所述
     /integration_test -> 测试生成目录
     /lib -> 主要核心代码目录
     /lib/main.dart -> 项目执行入口文件
     /lib/binding -> GetX捆绑类目录
+    /lib/config -> 配置文件目录
     /lib/controller -> 控制器目录（即：状态管理），用于页面上数据控制管理。
     /lib/pages -> 页面编写目录，以下的子目录即为页面中抽离的组件
     /lib/routes -> 路由管理及页面管理，每新建一个页面请到该目录下的pages_register.dart文件中注册该页面
