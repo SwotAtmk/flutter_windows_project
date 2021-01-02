@@ -54,10 +54,11 @@ class DioService extends GetxService {
 
   Future<Response> downloadFile(url, savePath) async {
     return await dio.download(url, savePath,
-        onReceiveProgress: (received, total) {
-      if (total != -1) {
-        print((received / total * 100).toStringAsFixed(0) + "%");
-      }
-    });
+        // onReceiveProgress: (received, total) { /// 文件下载进度
+        //   if (total != -1) {
+        //     print((received / total * 100).toStringAsFixed(0) + "%");
+        //   }
+        // }
+    );
   }
 }
