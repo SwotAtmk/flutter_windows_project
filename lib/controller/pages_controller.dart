@@ -81,7 +81,6 @@ class PagesController extends GetxController
     String activationCode = Get.find<SharedPreferencesService>().getString(activationCodeKey);
     /// todo: 请求接口查询并验证激活码是否有效，及返回激活信息：剩余天数等参数。
     isActivate = (activationCode != null);
-    print(isActivate);
     if(isActivate) currentPageIndex = CORE_PAGE_INDEX;
     else currentPageIndex = ACTIVATION_PAGE_INDEX;
     update();
