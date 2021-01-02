@@ -20,16 +20,19 @@ class DioService extends GetxService {
     return this;
   }
 
+  /// Getx服务生命周期
   void onInit() {
     super.onInit();
     print("dio service init……");
   }
 
+  /// 同上
   void onReady() {
     super.onReady();
     print("dio service onReady……");
   }
 
+  /// 同上
   void onClose() {
     super.onClose();
     print("dio service onClose……");

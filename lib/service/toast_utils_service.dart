@@ -1,6 +1,7 @@
 import 'package:flutter/painting.dart';
 import 'package:bot_toast/bot_toast.dart';
 
+/// 提示服务
 class ToastUtilsService{
   double x;
   double y;

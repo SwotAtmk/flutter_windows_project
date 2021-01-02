@@ -1,6 +1,6 @@
 # zaojiangchong_project
 
-    Flutter windows开发论文写作助手，后期考虑移植mac、linux
+    Flutter for windows开发论文写作助手，后期考虑移植到mac、linux终端
 
 ## 开发成员：
     - Jarming
@@ -30,7 +30,7 @@
     8、对接后端降重接口         × 待完成
     
 
-## 插件部分
+## 插件部分（不一定都用到该项目中只是做一个记录）
     1. dio    
         网络请求库，用于基本http网络请求UDP及TCP连接，主要功能网络数据交互、异步数据请求、文件上传等……
     2. flutter_swiper 
@@ -101,11 +101,12 @@
     /pubspec.yaml -> 配置文件
     /README.md -> 项目说明文档
     /packaged/innosetup-6.1.2.exe -> inno软件打包安装工具
-    /packaged/ChinesSimplified.isl -> 打包软件中文简体
+    /packaged/ChinesSimplified.isl -> 打包软件中文简体字库
     
 # 注意：
     C++代码中最好不要出现中文注释，不然可能会出现Unicode编码错误。
     Dart与C++交互通过MethodChannel对象进行互相调用。
     项目中有许多测试用的代码，虽然没有都用上，但希望以后能用得上。
     显示桌面时会报左侧底部溢出的异常，但不影响程序正常运行。
-    某些特殊的操作需要页面被构建完成之后执行，可以用Future.delayed做一个延迟操作
+    某些特殊的操作需要页面被构建完成之后执行，可以用Future.delayed做一个延迟操作。
+    暂时不支持版本号超过3位 -> 正例：1.0.1  √  <-----> 反例：1.0.0.1  × 。

@@ -6,7 +6,7 @@ import 'service/service_register.dart';
 import 'package:bot_toast/bot_toast.dart';
 
 Future main() async {
-  await initServices(); /// 初始化服务
+  await initServices();
   runApp(MyApp());
   /// 初始化设置windows窗体
   doWhenWindowReady(() { // 必须在runApp后调用不然会出现透明屏的情况，内部异步通过管道与C++通信设置窗体
@@ -20,8 +20,9 @@ Future main() async {
   });
 }
 
+/// 初始化服务
 Future initServices() async {
-  await Get.putAsync(() => DioService().init()); /// 初始化Dio服务
+  await Get.putAsync(() => DioService().init());               /// 初始化Dio服务
   await Get.putAsync(() => ToastUtilsService().init(0.0,0.8)); /// 初始化提示框服务
   await Get.putAsync(() => SharedPreferencesService().init()); /// 数据持久化服务
   await Get.putAsync(() => UpdateApplicationService().init()); /// 软件更新服务
