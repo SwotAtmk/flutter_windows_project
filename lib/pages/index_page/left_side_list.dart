@@ -28,32 +28,33 @@ class IndividualComponents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: (){
-        Get.find<PagesController>().changePage(index);
-      },
-      child: GetBuilder<PagesController>(builder: (controller) {
-        return Container(
-            height: 40,
-            margin: EdgeInsets.only(top:10),
-            decoration: BoxDecoration(
-                color: (index == controller.currentPageIndex)?Color(0xff206dda):Color(0xff153872),
-                borderRadius: BorderRadius.all(Radius.circular(4))
-            ),
-            child:Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                icon,
-                Container(
-                  margin: EdgeInsets.only(left: 20),
-                  child: Text(title,style: TextStyle(color: Colors.white,fontSize: 14),),
+    return GetBuilder<PagesController>(builder: (controller) {
+      return InkWell(
+          onTap: controller.isActivate? (){controller.changePage(index); } : null,
+          child: GetBuilder<PagesController>(builder: (controller) {
+            return Container(
+                height: 40,
+                margin: EdgeInsets.only(top:10),
+                decoration: BoxDecoration(
+                    color: (index == controller.currentPageIndex)?Color(0xff206dda):Color(0xff153872),
+                    borderRadius: BorderRadius.all(Radius.circular(4))
+                ),
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    icon,
+                    Container(
+                      margin: EdgeInsets.only(left: 20),
+                      child: Text(title,style: TextStyle(color: Colors.white,fontSize: 14),),
+                    )
+                  ],
                 )
-              ],
-            )
-        );
-      },
+            );
+          },
 
-      )
+          )
+      );
+    },
     );
   }
 }

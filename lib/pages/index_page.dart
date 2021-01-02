@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'pages_register.dart' show LeftSide,RightSide;
+import 'package:get/get.dart';
+import '../controller/controller_register.dart' show PagesController;
 
 // ignore: must_be_immutable
 class IndexPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.find<PagesController>().queryActivationStatus();
     return Scaffold(
         body: WindowBorder(
             color: Color.fromRGBO(0, 0, 0, 0),

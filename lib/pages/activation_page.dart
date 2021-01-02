@@ -1,6 +1,8 @@
 /// 激活页
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import '../controller/controller_register.dart' show PagesController;
 
 class ActivationPage extends StatelessWidget {
   @override
@@ -67,7 +69,8 @@ class ActivationPage extends StatelessWidget {
 
                     InkWell(
                       onTap: (){
-                        print("激活软件");
+                        // print("激活软件");
+                        Get.find<PagesController>().setActivationCode(editController.text);
                       },
                       child: Container(
                         height: 38,

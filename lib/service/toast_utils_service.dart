@@ -13,6 +13,8 @@ class ToastUtilsService{
   }
 
   /// 显示默认Text
-  dynamic showText(textContent) => BotToast.showText(text:textContent, align: Alignment(x,y));
+  CancelFunc showText(textContent) => BotToast.showText(text:textContent, align: Alignment(x,y));
+
+  CancelFunc showLoading() => BotToast.showLoading();
 
 }
