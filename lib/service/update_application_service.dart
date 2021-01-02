@@ -57,11 +57,11 @@ class UpdateApplicationService{
         ignoreButtonText: '忽略此版本',
         enableIgnore: true,
         onIgnore: () {
-          Get.find<ToastUtilsService>().showText("忽略");
+          Get.find<ToastUtilsService>().showText("已忽略此次更新");
           dialog.dismiss();
         },
         onUpdate: (){
-          print("去更新 -->  执行更新操作!");
+          Get.find<ToastUtilsService>().showText("正在下载更新……");
           executeUpdate(info["downloadUrl"],"./update/","update_file_"+new DateTime.now().millisecondsSinceEpoch.toString()+ ".exe");
           dialog.dismiss();
         });
