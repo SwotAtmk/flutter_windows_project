@@ -69,7 +69,6 @@ class PagesController extends GetxController
 
   String getActivationCode(){
     String activationCode = Get.find<SharedPreferencesService>().getString(activationCodeKey);
-    print(activationCode);
     return activationCode != null?activationCode:null;
   }
 
