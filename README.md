@@ -14,7 +14,7 @@
 项目运行时执行热加载或局部刷新时需要保持windows窗体在屏幕中显示，不然有可能此次操作不生效，页面不生效的情况请再次摁下R。
 
 ## 构建windows执行文件：
-`flutter build windows`
+`flutter build windows` 
 文件将构建到项目目录：/build/windows/runner/Release
 将此目录中的文件提取出来，用开源打包工具Inno打包。 
 *.iss配置文件后续会添加到项目中方便构建时使用
