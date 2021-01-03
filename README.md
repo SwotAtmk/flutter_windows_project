@@ -22,7 +22,7 @@
 ## 系统底层通信：
 1）、构建flutter for windows插件通过管道与C++相互调用。
 `flutter create --template plugin --platforms windows hello_plugin`
-2）、通过ffi与底层系统交互
+2）、通过ffi与底层系统交互 
 3）、通过win32 Api
 
 ## 项目功能及说明：
