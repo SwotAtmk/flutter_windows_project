@@ -69,7 +69,6 @@ class ActivationPage extends StatelessWidget {
 
                     InkWell(
                       onTap: (){
-                        // print("激活软件");
                         Get.find<PagesController>().setActivationCode(editController.text);
                       },
                       child: Container(

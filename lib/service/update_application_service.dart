@@ -21,7 +21,7 @@ class UpdateApplicationService {
   void checkUpdate(BuildContext context) {
     ///todo:接口获取软件版本信息
     Map<String, String> info = {
-      "version": "1.1000.12",
+      "version": "1.0.1",
       "title": "是否升级到4.1.4版本？",
       "updateContent": "新版本大小:2.0M\n1.xxxxxxx\n2.xxxxxxx\n3.xxxxxxx",
       "downloadUrl":
@@ -29,12 +29,8 @@ class UpdateApplicationService {
     };
 
     if (comparisonVersion(packageInfo.version, info["version"])) {
-
-      print("新版本更新");
+      /// 有新版本更新
       showUpdateWidget(info, context);
-    } else {
-
-      print("无新版本更新");
     }
 
   }
@@ -67,19 +63,16 @@ class UpdateApplicationService {
         isForce: true,
         updateButtonText: '升级',
         ignoreButtonText: '忽略此版本',
-        enableIgnore: true, onIgnore: () {
-      Get.find<ToastUtilsService>().showText("已忽略此次更新");
-      dialog.dismiss();
-    }, onUpdate: () {
-      Get.find<ToastUtilsService>().showText("正在下载更新……");
-      executeUpdate(
-          info["downloadUrl"],
-          "./update/",
-          "update_file_" +
-              new DateTime.now().millisecondsSinceEpoch.toString() +
-              ".exe");
-      dialog.dismiss();
-    });
+        enableIgnore: true,
+        onIgnore: () {
+          Get.find<ToastUtilsService>().showText("已忽略此次更新");
+          dialog.dismiss();
+        },
+        onUpdate: () {
+          Get.find<ToastUtilsService>().showText("正在下载更新……");
+          executeUpdate(info["downloadUrl"], "./update/", "update_file_" + new DateTime.now().millisecondsSinceEpoch.toString() + ".exe");
+          dialog.dismiss();
+        });
     return dialog;
   }
 
