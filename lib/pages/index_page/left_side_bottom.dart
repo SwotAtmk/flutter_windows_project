@@ -11,9 +11,9 @@ class LeftSideBottom extends StatelessWidget {
       children: [
         Divider(color: Color(0xffc9e5fd),height: 0.5, thickness: 1, indent: 10, endIndent: 10,),
         Container(
-          width: 140,
+          width: 154,
           height: 70,
-          margin: EdgeInsets.fromLTRB(10, 15, 10, 2),
+          margin: EdgeInsets.only(top: 15,bottom: 2),
           child: GridView.builder(
             scrollDirection: Axis.vertical,
             physics: NeverScrollableScrollPhysics(),
@@ -21,6 +21,7 @@ class LeftSideBottom extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 10,
+              crossAxisSpacing: 18,
               childAspectRatio: 10 / 2,
             ),
             itemBuilder: (BuildContext context, int index) {
@@ -30,19 +31,22 @@ class LeftSideBottom extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Container( /// TODO:图标占位组件
-                      margin: EdgeInsets.only(right: 10),
+                    Container(
                       width: 16,
                       height: 16,
                       decoration: BoxDecoration(
-                          color: Color.fromRGBO(220, 220, 220, 0.2),
+                          // color: Color.fromRGBO(220, 220, 220, 0.2),
                           borderRadius: BorderRadius.all(Radius.circular(4))),
+                      child: Image.asset(checkSystemList[index]["miniLogo"],width: 16,height: 16,),
                     ),
-                    Center(
-                      child: Text(
-                        checkSystemList[index]["name"],
-                        style: TextStyle(color: Color(0xffc1dcf6), fontSize: 10),
-                      ),
+                    Expanded(child:
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          checkSystemList[index]["name"],
+                          style: TextStyle(color: Color(0xffc1dcf6), fontSize: 12),
+                        ),
+                      )
                     )
                   ],
                 ),

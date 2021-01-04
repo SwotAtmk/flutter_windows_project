@@ -24,7 +24,7 @@ class WindowTitle extends StatelessWidget {
         Text(
           "卡密：",
           style: TextStyle(
-              color: Color(0xff999999), fontSize: 12, fontFamily: "SiyuanBold"),
+              color: Color(0xff999999), fontSize: 12),
         ),
         GetBuilder<PagesController>(builder: (controller) {
           String activationCode = controller.getActivationCode();
@@ -34,9 +34,8 @@ class WindowTitle extends StatelessWidget {
               (activationCode != null) ? activationCode : "激活软件",
               style: TextStyle(
                   color: Color(0xff666666),
-                  fontSize: 12,
-                  fontFamily: "SiyuanBold"),
-            ), // TODO:暂时填入默认值，后面从状态管理中获取
+                  fontSize: 12),
+            ),
           );
         },),
         GetBuilder<PagesController>(builder: (controller) {

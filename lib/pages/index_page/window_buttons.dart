@@ -47,7 +47,7 @@ class WindowButtons extends StatelessWidget {
               height: 20,
               margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child:Center(
-                child: SvgPicture.string(_minimizeIcon, color: isOverOrDown?Colors.black45:Colors.black,width: isOverOrDown?16:12,height: isOverOrDown?16:12,),
+                child: SvgPicture.string(_minimizeIcon, color: isOverOrDown?Color.fromRGBO(39, 128, 242, 1):Colors.black,width: isOverOrDown?16:12,height: isOverOrDown?16:12,),
               ),
             );
           },

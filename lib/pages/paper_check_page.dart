@@ -34,9 +34,9 @@ class PaperCheckPage extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       return _itemWidget(checkSystemList[index]["name"],
-                          explain:
-                          "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内测试内容测试内容测试内容",
-                          jumpLink: checkSystemList[index]["url"]);
+                          explain: checkSystemList[index]["explain"],
+                          jumpLink: checkSystemList[index]["url"],
+                          logoImage:checkSystemList[index]["logoImage"]);
                     }),
 
               ],
@@ -95,7 +95,7 @@ class PaperCheckPage extends StatelessWidget {
             child: Divider(
               indent: 2,
               endIndent: 2,
-              thickness: 1,
+              thickness: 0.5,
               height: 0.5,
               color: Color(0xffbdbdbd),
             ),
@@ -127,9 +127,7 @@ class PaperCheckPage extends StatelessWidget {
                 Spacer(),
                 Container(
                   margin: EdgeInsets.only(right: 10),
-                  child: Icon(Icons.web_sharp),
-
-                  /// TODO: LOGO 需要替换，暂时不放真实LOGO
+                  child: Image.asset(logoImage,height: 28,width: 68,),
                 )
               ],
             ),

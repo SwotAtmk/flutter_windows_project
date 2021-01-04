@@ -2,6 +2,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:zaojiangchong_project/service/dio_service.dart';
 import '../controller/controller_register.dart' show PagesController;
 
 class ActivationPage extends StatelessWidget {
@@ -21,13 +22,12 @@ class ActivationPage extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.only(left: 50,top: 70),
-                height: 280,
-                width: 280,
-                color: Colors.green,
-                ///child: , 后面设置图片
+                width: 340,
+                alignment: Alignment.center,
+                child: Image.asset("assets/images/decorative_figure.png",width: 340,),
               ),
               Container(
-                margin: EdgeInsets.only(left: 50),
+                // margin: EdgeInsets.only(left: 20),
                 child: Column(
                   children: [
                     Container(
@@ -69,7 +69,10 @@ class ActivationPage extends StatelessWidget {
 
                     InkWell(
                       onTap: (){
-                        Get.find<PagesController>().setActivationCode(editController.text);
+                        DioService().requestData("https://www.zaojiangchong.com/v1/api/rewrite/bindip/" + editController.text).then((value){
+                          // value.data;
+                        });
+
                       },
                       child: Container(
                         height: 38,

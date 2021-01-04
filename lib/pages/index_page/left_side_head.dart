@@ -8,7 +8,7 @@ class LeftSideHead extends StatelessWidget {
         children: [
           _logo(),
           _title(),
-          Divider(color: Color(0xffc9e5fd),height: 0.5,thickness: 1,indent: 10,endIndent: 10,)
+          Divider(color: Color(0xffc9e5fd),height: 0.5,thickness: 0.5,indent: 10,endIndent: 10,)
         ],
       ),
 
@@ -27,7 +27,7 @@ class LeftSideHead extends StatelessWidget {
             border: Border.all(width: 1, color: Color.fromRGBO(0, 0, 0, 0)),
             color: Color.fromRGBO(39, 128, 242, 1),
           ),
-          child: Center(child: Icon(Icons.image_search_outlined,color: Colors.white,),),//暂时用icon代替，后面换成images
+          child: Center(child: Image.asset("assets/images/app_logo.png",width: 42,height: 42,),),//暂时用icon代替，后面换成images Icon(Icons.image_search_outlined,color: Colors.white,)
         ),
       ),
     );
@@ -35,10 +35,9 @@ class LeftSideHead extends StatelessWidget {
 
   Widget _title(){
     return Container(
-      margin: EdgeInsets.only(top:5, bottom: 5),
-      child: Center(
-        child: Text("轻松写作助手",style: TextStyle(fontSize: 20,color: Colors.white,fontFamily: "Muyao"),),
-      ),
+      alignment: Alignment.center,
+      margin: EdgeInsets.only(top:5, bottom: 20),
+      child: Image.asset("assets/images/app_logo_text.png")
     );
   }
 
