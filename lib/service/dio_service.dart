@@ -52,6 +52,36 @@ class DioService extends GetxService {
     }
   }
 
+  Future post(path,
+      {param, String contentType = "application/x-www-form-urlencoded"}) async {
+    try {
+      dio.options.contentType = contentType;
+      Response response = await dio.post(path, data: param);
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw Exception("接口异常");
+      }
+    } catch (e) {
+      print('ERROR:>>>>>>>>>>>>>>>${e}');
+    }
+  }
+
+  Future get(path,
+      {param, String contentType = "application/x-www-form-urlencoded"}) async {
+    try {
+      dio.options.contentType = contentType;
+      Response response = await dio.get(path, queryParameters: param);
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw Exception("接口异常");
+      }
+    } catch (e) {
+      print('ERROR:>>>>>>>>>>>>>>>${e}');
+    }
+  }
+
   Future<Response> downloadFile(url, savePath) async {
     return await dio.download(url, savePath,
         // onReceiveProgress: (received, total) { /// 文件下载进度

@@ -2,8 +2,10 @@
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:zaojiangchong_project/service/dio_service.dart';
+import 'package:zaojiangchong_project/service/service_register.dart' show DioService,ToastUtilsService;
 import '../controller/controller_register.dart' show PagesController;
+import "../model/bindip_model.dart";
+import 'dart:convert';
 
 class ActivationPage extends StatelessWidget {
   @override
@@ -69,10 +71,14 @@ class ActivationPage extends StatelessWidget {
 
                     InkWell(
                       onTap: (){
-                        DioService().requestData("https://www.zaojiangchong.com/v1/api/rewrite/bindip/" + editController.text).then((value){
-                          // value.data;
+                        String activationCode = editController.text;
+                        Get.find<PagesController>().activationApplication(activationCode).then((value){
+                          if(value["isSuccess"]){
+                            Get.find<ToastUtilsService>().showText("软件激活成功");
+                          }else{
+                            Get.find<ToastUtilsService>().showText(value["codeMsg"]);
+                          }
                         });
-
                       },
                       child: Container(
                         height: 38,
