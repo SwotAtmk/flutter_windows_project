@@ -37,7 +37,7 @@ class RightSide extends GetView<PagesController> {
               Expanded(child:
                 Container(
                   decoration: BoxDecoration(
-                      color: Color(0xfff6f9f9) ///Color(0xfff6f9f9)
+                      color: Color(0xfff6f9f9)
                   ),
                   child: GetBuilder<PagesController>(
                     builder: (controller){

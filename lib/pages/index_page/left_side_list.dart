@@ -10,8 +10,8 @@ class LeftSideList extends StatelessWidget {
         margin: EdgeInsets.all(10),
         child: Column(
           children: [
-            IndividualComponents(Icon(Icons.wb_cloudy_outlined,color: Colors.white,size: 18,), "智能去重", 0),
-            IndividualComponents(Icon(Icons.search_sharp,color: Colors.white,size: 18,), "文章查重", 1),
+            IndividualComponents(Image.asset("assets/images/smart_yun.png"), "智能去重", 0),
+            IndividualComponents(Image.asset("assets/images/search.png",height: 20,), "文章查重", 1),///Icon(Icons.search_sharp,color: Colors.white,size: 18,)
           ],
         ),
     );
@@ -20,11 +20,11 @@ class LeftSideList extends StatelessWidget {
 
 // ignore: must_be_immutable
 class IndividualComponents extends StatelessWidget {
-  Icon icon;
+  Image image;
   String title;
   int index;
 
-  IndividualComponents(this.icon,this.title,this.index);
+  IndividualComponents(this.image,this.title,this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class IndividualComponents extends StatelessWidget {
                 child:Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    icon,
+                    image,
                     Container(
                       margin: EdgeInsets.only(left: 20),
                       child: Text(title,style: TextStyle(color: Colors.white,fontSize: 14),),

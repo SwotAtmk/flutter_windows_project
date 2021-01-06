@@ -8,10 +8,11 @@ import 'dart:convert';
 class PagesController extends GetxController
 {
 
-  static const CORE_PAGE_INDEX = 0;
-  static const PAPER_CHECK_PAGE_INDEX = 1;
-  static const ACTIVATION_PAGE_INDEX = 2;
-  int currentPageIndex = ACTIVATION_PAGE_INDEX;   ///当前页面索引，默认为激活页面
+  static const CORE_PAGE_INDEX = 0;           /// 核心功能降重页
+  static const PAPER_CHECK_PAGE_INDEX = 1;    /// 论文查重广告页
+  static const ACTIVATION_PAGE_INDEX = 2;     /// 软件激活页
+
+  int currentPageIndex = CORE_PAGE_INDEX;   ///当前页面索引，默认为激活页面
 
   bool isActivate = false;
 
@@ -120,7 +121,7 @@ class PagesController extends GetxController
   Future<Map<String,dynamic>> activationApplication(String activationCode) async {
     bool isSuccess = false;
     String codeMsg = "";
-    await DioService().get("https://www.zaojiangchong.com/api/rewrite/bindip/" + activationCode).then((value){
+    await DioService().get("https://www.zaojiangchong.com/api/rewrite/bindip/" + activationCode,errorReturn: {"code":400,"codeMsg":"激活失败","data":null}).then((value){
       Bindip_model bindipModel = Bindip_model.fromJson(value);
       if(bindipModel.code == 200){
         isActivate = true;

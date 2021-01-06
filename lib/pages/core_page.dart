@@ -1,75 +1,161 @@
 /// 主要降重功能页
 import 'package:flutter/material.dart';
-import 'package:win32/win32.dart';
-import 'dart:ffi';
-import '../service/service_register.dart' show DioService,ToastUtilsService;
-import 'package:package_info_plus/package_info_plus.dart';
-import 'package:flutter_update_dialog/flutter_update_dialog.dart';
+import 'package:flutter/services.dart';
+import 'package:zaojiangchong_project/controller/jiangchong_controller.dart';
 import 'package:get/get.dart';
+import 'package:zaojiangchong_project/controller/pages_controller.dart';
+import 'package:zaojiangchong_project/service/service_register.dart';
 
 // ignore: must_be_immutable
 class CorePage extends StatelessWidget {
-  UpdateDialog dialog;
+  TextEditingController editController = TextEditingController();
+  TextEditingController resultController = TextEditingController(text: "我今天没有吃饭！");
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
+      margin: EdgeInsets.all(15),
       child: Column(
         children: [
-          InkWell(
-            onTap: (){
-              DioService().downloadFile("https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B0A576E00-3665-36D9-E00F-A3A0DAAC905A%7D%26lang%3Dzh-CN%26browser%3D5%26usagestats%3D1%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable-statsdef_1%26installdataindex%3Dempty/update2/installers/ChromeSetup.exe", "./update/ChromeSetup.exe")
-                  .then((value){
-                    ShellExecute(0,TEXT("open"),TEXT("ChromeSetup.exe"),nullptr,TEXT("./update/"),SW_SHOW);
-                });
-            },
-            child: Text("下载并执行文件"),
-          ),InkWell(
-            onTap: () async {
-              PackageInfo packageInfo = await PackageInfo.fromPlatform();
-              print(packageInfo.appName);
-              print(packageInfo.packageName);
-              print(packageInfo.version);
-            },
-            child: Text("获取应用信息"),
-          ),
-          InkWell(
-            onTap: () async {
-              dialog = UpdateDialog.showUpdate(context,
-                  width: 250,
-                  title: "是否升级到4.1.4版本？",
-                  updateContent: "新版本大小:2.0M\n1.xxxxxxx\n2.xxxxxxx\n3.xxxxxxx",
-                  titleTextSize: 14,
-                  contentTextSize: 12,
-                  buttonTextSize: 12,
-                  topImage: Image.asset('assets/images/bg_update_top.png'),
-                  extraHeight: 5,
-                  radius: 8,
-                  themeColor: Color(0xFFFFAC5D),
-                  progressBackgroundColor: Color(0x5AFFAC5D),
-                  isForce: true,
-                  updateButtonText: '升级',
-                  ignoreButtonText: '忽略此版本',
-                  enableIgnore: true, onIgnore: () {
-                    Get.find<ToastUtilsService>().showText("忽略");
-                    dialog.dismiss();
+          Stack(
+            children: [
+              Container(
+                color:Colors.white,
+                child: TextField(
+                  controller: editController,
+                  maxLines: 9,
+                  onChanged: (r){
+                    Get.find<JiangchonController>().changeTextNumber(r.length);
                   },
-                  onUpdate: (){
-                    print("去更新 -->  执行更新操作!");
-                    dialog.dismiss();
-                  });
-            },
-            child: Text("更新弹出框"),
+                  autofocus: true,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(600)
+                  ],
+                  keyboardType: TextInputType.text,
+                  showCursor:true,
+                  cursorColor: Color(0xff4296ff),
+                  decoration: InputDecoration(
+                      hintText: "输入需要降重的文字，单句不能少于5个字符，最多可输入600个字符",
+                      hintStyle: TextStyle(color:Color(0xffbdbdbd),fontSize: 14),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(6),borderSide: BorderSide(width: 0.1,color: Color(0xff4296ff)),),
+                      contentPadding: EdgeInsets.all(28)
+                  ),
+                ),
+              ),
+              Positioned(
+                child: Container(
+                  height: 47,
+                  width: 770,
+                  margin: EdgeInsets.only(left:2,right: 2),
+                  decoration: BoxDecoration(
+                    border: Border(top: BorderSide(width: 1,color:Color(0xfff6f6f6))),
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(width: 20,),
+                      Obx(() => Text(Get.find<JiangchonController>().inputTextNumber.toString(),style: TextStyle(fontSize: 14,color: Color(0xff81b4ff)),)),
+                      Text("/600字",style: TextStyle(fontSize: 14,color: Color(0xffbdbdbd)),),
+                      Spacer(),
+                      InkWell(
+                        onTap: (){
+                          Get.find<JiangchonController>().changeTextNumber(0);
+                          editController.clear();
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: 10,bottom: 10,right: 5),
+                          width: 68,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            border: Border.all(color:Color(0xffe3e3e3)),
+                            borderRadius: BorderRadius.circular(34)
+                          ),
+                          child: Text("清空",style: TextStyle(color:Color(0xff666666)),),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: (){
+                          print("一键去重");
+                          Get.find<JiangchonController>().getJiangchongResult(editController.text,Get.find<PagesController>().getActivationCode()).then((value){
+                            resultController.text = value;
+                          });
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: 10,bottom: 10,left: 5,right: 18),
+                          width: 88,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Color(0xff4296ff),
+                              // border: Border.all(color:Color(0xff4296ff)),
+                              borderRadius: BorderRadius.circular(34)
+                          ),
+                          child: Text("一键去重",style: TextStyle(color:Colors.white),),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                left: 0,
+                bottom: 0,
+              )
+            ],
           ),
-          InkWell(
-            onTap: (){
-              Get.find<ToastUtilsService>().showText("测试内容测试内容测试内容");
-            },
-            child: Text("提示框测试"),
+          Stack(
+            children: [
+              Container(
+                color:Colors.white,
+                margin: EdgeInsets.only(top: 15),
+                child: TextField(
+                  controller: resultController,
+                  maxLines: 11,
+                  enabled: false,
+                  scrollPadding: EdgeInsets.all(38),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(6),borderSide: BorderSide(width:0.1,color: Color(0xffe6e6e6)),),
+                  ),
+                ),
+              ),
+              Positioned(
+                child: Container(
+                  height: 47,
+                  width: 770,
+                  margin: EdgeInsets.only(left:2,right: 2),
+                  decoration: BoxDecoration(
+                    border: Border(top: BorderSide(width: 1,color:Color(0xfff6f6f6))),
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(width: 20,),
+                      Text("降重之后字数统计  ",style: TextStyle(fontSize: 14,color: Color(0xffc3c3c3)),),
+                      Obx(() => Text(Get.find<JiangchonController>().inputTextNumber.toString(),style: TextStyle(fontSize: 14,color: Color(0xff81b4ff)),)),
+                      Text("  字",style: TextStyle(fontSize: 14,color: Color(0xffc3c3c3)),),
+                      Spacer(),
+                      InkWell(
+                        onTap: (){
+                          Clipboard.setData(ClipboardData(text: resultController.text));
+                          Get.find<ToastUtilsService>().showText("复制成功");
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: 10,bottom: 10,left: 5,right: 18),
+                          width: 88,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Color(0xff4296ff),
+                              borderRadius: BorderRadius.circular(34)
+                          ),
+                          child: Text("复制",style: TextStyle(color:Colors.white),),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                left: 0,
+                bottom: 0,
+              )
+            ],
           )
         ],
-      )
+      ),
     );
   }
 }

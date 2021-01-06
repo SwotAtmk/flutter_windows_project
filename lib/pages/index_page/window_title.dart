@@ -58,11 +58,10 @@ class WindowTitle extends StatelessWidget {
                         child: Image.asset("assets/images/vip_icon.png",width: 16,height: 16,),
                       ),
                       Container(
+                        width: 58,
                         margin: EdgeInsets.only(left: 5),
                         child: Text(
-                          "剩余"+controller.bindInfo.data.surplusDay.toString()+"天",
-
-                          /// TODO:状态管理获取，非真实数据
+                          (controller.bindInfo != null)? "剩余"+controller.bindInfo.data.surplusDay.toString()+"天":"",
                           style: TextStyle(color: Colors.white, fontSize: 13),
                         ),
                       )

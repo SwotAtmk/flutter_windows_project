@@ -51,6 +51,7 @@ class ActivationPage extends StatelessWidget {
                           fontSize: 16,
                         ),
                         inputFormatters: [
+                          LengthLimitingTextInputFormatter(600),
                           FilteringTextInputFormatter.allow(RegExp("[a-zA-Z0-9]")),//只允许输入字母和数字
                         ],
                         decoration: InputDecoration(

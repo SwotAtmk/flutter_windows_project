@@ -6,20 +6,28 @@ class JiangchonController extends GetxController{
   final jiangchongResult = JiangchongResult().obs;
   final errorResult = JiangchongResult().obs;
 
-  void getJiangchongResult(String sentence) {
+  final inputTextNumber = 0.obs;
+
+  changeTextNumber(int number){
+    inputTextNumber(number);
+  }
+
+  Future<String> getJiangchongResult(String sentence, String _token) async {
+    String targetSentence;
     try {
-      Get.find<DioService>().requestData("http://api.zaojiangchong.com/rewrite/quickExperience",param: {"sentence": sentence},contentType: "application/json").then((data){
+      await Get.find<DioService>().post("https://www.zaojiangchong.com/api/rewrite/result",param: {"code":_token,"sentence": sentence},contentType: "application/json").then((data){
         JiangchongResult result = JiangchongResult.fromJson(data);
-        if(result.code == 200){
+        if (result.code == 200) {
           jiangchongResult(result);
-        }else{
+          targetSentence = result.data.targetSentence;
+        } else {
           errorResult(result);
         }
-        update();
       });
     } catch (e) {
       print('ERROR:>>>>>>>>>>>>>>>${e}');
     }
+    return targetSentence;
   }
 
 }

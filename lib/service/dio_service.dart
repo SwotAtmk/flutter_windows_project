@@ -68,7 +68,7 @@ class DioService extends GetxService {
   }
 
   Future get(path,
-      {param, String contentType = "application/x-www-form-urlencoded"}) async {
+      {param, String contentType = "application/x-www-form-urlencoded",errorReturn}) async {
     try {
       dio.options.contentType = contentType;
       Response response = await dio.get(path, queryParameters: param);
@@ -78,7 +78,7 @@ class DioService extends GetxService {
         throw Exception("接口异常");
       }
     } catch (e) {
-      print('ERROR:>>>>>>>>>>>>>>>${e}');
+      return errorReturn;
     }
   }
 

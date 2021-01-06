@@ -76,7 +76,7 @@ class HomeView extends StatelessWidget {
         controller: editController,
         maxLines: 6,
         onChanged: (r){
-          Get.find<JiangchonController>().getJiangchongResult(r);
+          // Get.find<JiangchonController>().getJiangchongResult(r);
         },
         // maxLength: 100,
         // keyboardType: TextInputType.text,

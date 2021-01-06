@@ -4,6 +4,7 @@ import 'package:zaojiangchong_project/routes/main_route.dart';
 import 'package:get/get.dart';
 import 'service/service_register.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'controller/controller_register.dart' show PagesController;
 
 Future main() async {
   await initServices();
@@ -32,6 +33,8 @@ Future initServices() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration.zero,(){Get.find<PagesController>().queryActivationStatus();});
+    Future.delayed(Duration.zero, () { Get.find<UpdateApplicationService>().checkUpdate(context); }); /// 需要等待页面构建好后执行，所以在这里进行延迟操作。
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: MainRoute.routeArray,
