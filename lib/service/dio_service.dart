@@ -36,8 +36,8 @@ class DioService extends GetxService {
   }
 
   ///请求接口数据
-  Future requestData(path,
-      {param, String contentType = "application/x-www-form-urlencoded"}) async {
+  Future requestData(String path,
+      {Map<String,dynamic> param, String contentType = "application/x-www-form-urlencoded"}) async {
     try {
       print("获取数据${path}.............................");
       dio.options.contentType = contentType;
@@ -52,8 +52,8 @@ class DioService extends GetxService {
     }
   }
 
-  Future post(path,
-      {param, String contentType = "application/x-www-form-urlencoded"}) async {
+  Future post(String path,
+      {Map<String,dynamic> param, String contentType = "application/x-www-form-urlencoded"}) async {
     try {
       dio.options.contentType = contentType;
       Response response = await dio.post(path, data: param);
@@ -67,8 +67,8 @@ class DioService extends GetxService {
     }
   }
 
-  Future get(path,
-      {param, String contentType = "application/x-www-form-urlencoded",errorReturn}) async {
+  Future get(String path,
+      {Map<String,dynamic> param, String contentType = "application/x-www-form-urlencoded",dynamic errorReturn}) async {
     try {
       dio.options.contentType = contentType;
       Response response = await dio.get(path, queryParameters: param);
@@ -82,7 +82,7 @@ class DioService extends GetxService {
     }
   }
 
-  Future<Response> downloadFile(url, savePath) async {
+  Future<Response> downloadFile(String url,String savePath) async {
     return await dio.download(url, savePath,
         // onReceiveProgress: (received, total) { /// 文件下载进度
         //   if (total != -1) {

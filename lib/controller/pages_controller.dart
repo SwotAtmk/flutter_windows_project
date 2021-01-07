@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import '../pages/pages_register.dart' show CorePage,PaperCheckPage,ActivationPage;
 import '../service/service_register.dart' show SharedPreferencesService,DioService,ToastUtilsService;
 import '../model/bindip_model.dart';
-import 'dart:convert';
 
 class PagesController extends GetxController
 {
@@ -25,6 +24,12 @@ class PagesController extends GetxController
     PaperCheckPage(),   // 文章查重页
     ActivationPage(),   // 激活页面
   ];
+
+  @override
+  void onInit() {
+    super.onInit();
+    queryActivationStatus();
+  }
 
   /// 改变页面
   void changePage(int index){

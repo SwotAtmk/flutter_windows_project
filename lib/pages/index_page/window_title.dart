@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zaojiangchong_project/controller/pages_controller.dart';
 import '../../controller/controller_register.dart' show PagesController;
 
 class WindowTitle extends StatelessWidget {
@@ -10,7 +11,7 @@ class WindowTitle extends StatelessWidget {
         Spacer(),
         InkWell(
           onTap: () async {
-            await Get.find<PagesController>().removeActivationCode();
+            await Get.find<PagesController>().removeActivationCode(); //todo:取消激活，测试时使用
           },
           child: Container(
               margin: EdgeInsets.only(right: 18),
@@ -28,46 +29,46 @@ class WindowTitle extends StatelessWidget {
         ),
         GetBuilder<PagesController>(builder: (controller) {
           String activationCode = controller.getActivationCode();
-          return Container(
-            margin: EdgeInsets.only(right: 15),
-            child: Text(
-              (activationCode != null) ? activationCode : "激活软件",
-              style: TextStyle(
-                  color: Color(0xff666666),
-                  fontSize: 12),
-            ),
-          );
+          if(activationCode != null){
+            return Container(
+              margin: EdgeInsets.only(right: 15),
+              child: Text(
+                 activationCode,
+                style: TextStyle(
+                    color: Color(0xff666666),
+                    fontSize: 12),
+              ),
+            );
+          }else{
+            return InkWell(
+              onTap: (){
+                Get.find<PagesController>().changePage(PagesController.ACTIVATION_PAGE_INDEX);
+              },
+              child: Container(
+                margin: EdgeInsets.only(right: 15),
+                child: Text(
+                  "激活软件",
+                  style: TextStyle(
+                      color: Color(0xff666666),
+                      fontSize: 12),
+                ),
+              ),
+            );
+          }
+
         },),
         GetBuilder<PagesController>(builder: (controller) {
           String activationCode = controller.getActivationCode();
           if (activationCode != null) {
-            return Container(
-                width: 105,
-                height: 28,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(14)),
-                    color: Color(0xff4296ff)),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 16,
-                        height: 16,
-                        alignment:Alignment.center,
-                        child: Image.asset("assets/images/vip_icon.png",width: 16,height: 16,),
-                      ),
-                      Container(
-                        width: 58,
-                        margin: EdgeInsets.only(left: 5),
-                        child: Text(
-                          (controller.bindInfo != null)? "剩余"+controller.bindInfo.data.surplusDay.toString()+"天":"",
-                          style: TextStyle(color: Colors.white, fontSize: 13),
-                        ),
-                      )
-                    ],
-                  ),
-                )
+            return Chip(
+              avatar: Image.asset("assets/images/vip_icon.png",width: 16,height: 16,),
+              label: Text(
+                (controller.bindInfo != null)? "剩余"+controller.bindInfo.data.surplusDay.toString()+"天":"",
+                style: TextStyle(color: Colors.white, fontSize: 13),
+              ),
+              padding: EdgeInsets.only(left: 5,right: 5),
+              labelPadding: EdgeInsets.only(right: 10),
+              backgroundColor: Color(0xff4296ff),
             );
           } else {
             return SizedBox(width: 10,);

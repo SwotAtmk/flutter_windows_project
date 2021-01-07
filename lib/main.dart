@@ -33,13 +33,11 @@ Future initServices() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration.zero,(){Get.find<PagesController>().queryActivationStatus();});
-    Future.delayed(Duration.zero, () { Get.find<UpdateApplicationService>().checkUpdate(context); }); /// 需要等待页面构建好后执行，所以在这里进行延迟操作。
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: MainRoute.routeArray,
       initialRoute: "/",
-      enableLog: true,
+      enableLog: false,
       title: "轻松写作助手",
       builder: BotToastInit(),
       navigatorObservers: [BotToastNavigatorObserver()],

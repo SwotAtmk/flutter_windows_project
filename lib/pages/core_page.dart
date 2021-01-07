@@ -1,15 +1,14 @@
 /// 主要降重功能页
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zaojiangchong_project/controller/jiangchong_controller.dart';
+import 'package:zaojiangchong_project/controller/controller_register.dart' show JiangchonController,PagesController;
 import 'package:get/get.dart';
-import 'package:zaojiangchong_project/controller/pages_controller.dart';
 import 'package:zaojiangchong_project/service/service_register.dart';
 
 // ignore: must_be_immutable
 class CorePage extends StatelessWidget {
   TextEditingController editController = TextEditingController();
-  TextEditingController resultController = TextEditingController(text: "我今天没有吃饭！");
+  TextEditingController resultController = TextEditingController();
 
 
   @override
@@ -21,7 +20,11 @@ class CorePage extends StatelessWidget {
           Stack(
             children: [
               Container(
-                color:Colors.white,
+                decoration: BoxDecoration(
+                    color:Colors.white,
+                    borderRadius: BorderRadius.circular(6),
+                    border: Border.all(width: 1,color: Color(0xff4296ff),)
+                ),
                 child: TextField(
                   controller: editController,
                   maxLines: 9,
@@ -38,7 +41,7 @@ class CorePage extends StatelessWidget {
                   decoration: InputDecoration(
                       hintText: "输入需要降重的文字，单句不能少于5个字符，最多可输入600个字符",
                       hintStyle: TextStyle(color:Color(0xffbdbdbd),fontSize: 14),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(6),borderSide: BorderSide(width: 0.1,color: Color(0xff4296ff)),),
+                      border: OutlineInputBorder(borderSide: BorderSide.none,), /// borderSide: BorderSide(width: 0.1,color: Color(0xff4296ff))
                       contentPadding: EdgeInsets.all(28)
                   ),
                 ),
@@ -75,9 +78,11 @@ class CorePage extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: (){
-                          print("一键去重");
+                          var closeFunc = ToastUtilsService().showLoading();
                           Get.find<JiangchonController>().getJiangchongResult(editController.text,Get.find<PagesController>().getActivationCode()).then((value){
-                            resultController.text = value;
+                           resultController.text = value;
+                           Get.find<JiangchonController>().changeResultTextNumber(value.length);
+                           closeFunc();
                           });
                         },
                         child: Container(
@@ -103,7 +108,11 @@ class CorePage extends StatelessWidget {
           Stack(
             children: [
               Container(
-                color:Colors.white,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(6),
+                  border: Border.all(width: 1,color: Color(0xffe6e6e6),)
+                ),
                 margin: EdgeInsets.only(top: 15),
                 child: TextField(
                   controller: resultController,
@@ -111,7 +120,7 @@ class CorePage extends StatelessWidget {
                   enabled: false,
                   scrollPadding: EdgeInsets.all(38),
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(6),borderSide: BorderSide(width:0.1,color: Color(0xffe6e6e6)),),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(6),borderSide: BorderSide.none ),///BorderSide(width:0.1,color: Color(0xffe6e6e6)),
                   ),
                 ),
               ),
@@ -127,7 +136,7 @@ class CorePage extends StatelessWidget {
                     children: [
                       SizedBox(width: 20,),
                       Text("降重之后字数统计  ",style: TextStyle(fontSize: 14,color: Color(0xffc3c3c3)),),
-                      Obx(() => Text(Get.find<JiangchonController>().inputTextNumber.toString(),style: TextStyle(fontSize: 14,color: Color(0xff81b4ff)),)),
+                      Obx(() => Text(Get.find<JiangchonController>().resultTextNumber.toString(),style: TextStyle(fontSize: 14,color: Color(0xff81b4ff)),)),
                       Text("  字",style: TextStyle(fontSize: 14,color: Color(0xffc3c3c3)),),
                       Spacer(),
                       InkWell(

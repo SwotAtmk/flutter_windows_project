@@ -18,4 +18,5 @@ class ToastUtilsService{
 
   CancelFunc showLoading() => BotToast.showLoading();
 
+  void removeAll() => BotToast.removeAll();
 }

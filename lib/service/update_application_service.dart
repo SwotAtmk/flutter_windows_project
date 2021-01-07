@@ -18,12 +18,11 @@ class UpdateApplicationService {
   }
 
   /// 检测更新
-  Future checkUpdate(BuildContext context) async {
+  Future<void> checkUpdate(BuildContext context) async {
     Map<String, dynamic> info;
     await Get.find<DioService>().get("https://www.zaojiangchong.com/app/windowsConfig.json").then((value){
       info = value;
     });
-
     if (comparisonVersion(packageInfo.version, info["version"])) {
       /// 有新版本更新
       showUpdateWidget(info, context);
@@ -41,7 +40,7 @@ class UpdateApplicationService {
 
   /// 显示更新视图
   UpdateDialog showUpdateWidget(
-      Map<String, String> info, BuildContext context) {
+      Map<String, dynamic> info, BuildContext context) {
     dialog = UpdateDialog.showUpdate(context,
         width: 250,
         title: (info["title"] != null) ? info['title'] : "有新版本更新！！！",
@@ -66,7 +65,7 @@ class UpdateApplicationService {
         },
         onUpdate: () {
           Get.find<ToastUtilsService>().showText("正在下载更新……");
-          executeUpdate(info["downloadUrl"], "./update/", "update_file_" + new DateTime.now().millisecondsSinceEpoch.toString() + ".exe");
+          executeUpdate(info["applicationDownloadUrl"], "./update/", "update_file_" + new DateTime.now().millisecondsSinceEpoch.toString() + ".exe");
           dialog.dismiss();
         });
     return dialog;
