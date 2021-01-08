@@ -3,9 +3,9 @@
 const isDebug = false;
 
 
-const domainJaneName = "ally";
+const domainJaneName = "taow";
 
-const isHttps = false;
+const isHttps = true;
 
 const  List<Map<String, String>> checkSystemList = [
   {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zaojiangchong_project/controller/pages_controller.dart';
 import '../../controller/controller_register.dart' show PagesController;
+import '../../config/system_config.dart';
 
 class WindowTitle extends StatelessWidget {
   @override
@@ -11,7 +12,9 @@ class WindowTitle extends StatelessWidget {
         Spacer(),
         InkWell(
           onTap: () async {
-            await Get.find<PagesController>().removeActivationCode(); //todo:取消激活，测试时使用
+            if(isDebug){
+              await Get.find<PagesController>().removeActivationCode();
+            }
           },
           child: Container(
               margin: EdgeInsets.only(right: 18),
