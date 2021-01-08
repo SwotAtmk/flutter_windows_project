@@ -1,5 +1,8 @@
 /// 系统配置
 
+const isDebug = false;
+
+
 const domainJaneName = "ally";
 
 const isHttps = false;

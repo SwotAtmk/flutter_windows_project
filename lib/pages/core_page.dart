@@ -8,8 +8,6 @@ import 'package:zaojiangchong_project/service/service_register.dart';
 // ignore: must_be_immutable
 class CorePage extends StatelessWidget {
   TextEditingController editController = TextEditingController();
-  TextEditingController resultController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +18,7 @@ class CorePage extends StatelessWidget {
           Stack(
             children: [
               Container(
+                height: 240,
                 decoration: BoxDecoration(
                     color:Colors.white,
                     borderRadius: BorderRadius.circular(6),
@@ -27,7 +26,7 @@ class CorePage extends StatelessWidget {
                 ),
                 child: TextField(
                   controller: editController,
-                  maxLines: 9,
+                  maxLines: 8,
                   onChanged: (r){
                     Get.find<JiangchonController>().changeTextNumber(r.length);
                   },
@@ -78,9 +77,14 @@ class CorePage extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: (){
-                          var closeFunc = ToastUtilsService().showLoading();
+                          var closeFunc = Get.find<ToastUtilsService>().showLoading();
+                          Future.delayed(Duration(seconds: 5),(){
+                            if(closeFunc != null){
+                              closeFunc();
+                              Get.find<ToastUtilsService>().showText("服务器繁忙……");
+                            }
+                          });
                           Get.find<JiangchonController>().getJiangchongResult(editController.text,Get.find<PagesController>().getActivationCode()).then((value){
-                           resultController.text = value;
                            Get.find<JiangchonController>().changeResultTextNumber(value.length);
                            closeFunc();
                           });
@@ -91,7 +95,6 @@ class CorePage extends StatelessWidget {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: Color(0xff4296ff),
-                              // border: Border.all(color:Color(0xff4296ff)),
                               borderRadius: BorderRadius.circular(34)
                           ),
                           child: Text("一键去重",style: TextStyle(color:Colors.white),),
@@ -108,20 +111,20 @@ class CorePage extends StatelessWidget {
           Stack(
             children: [
               Container(
+                width: 770,
+                height: 265,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(6),
                   border: Border.all(width: 1,color: Color(0xffe6e6e6),)
                 ),
+                padding: EdgeInsets.only(top: 20,left: 20,right: 20,bottom: 47),
                 margin: EdgeInsets.only(top: 15),
-                child: TextField(
-                  controller: resultController,
-                  maxLines: 11,
-                  enabled: false,
-                  scrollPadding: EdgeInsets.all(38),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(6),borderSide: BorderSide.none ),///BorderSide(width:0.1,color: Color(0xffe6e6e6)),
-                  ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: GetBuilder<JiangchonController>(builder: ( controller) {
+                    return Text((controller.resultStr != null)?controller.resultStr:"",);
+                  },),
                 ),
               ),
               Positioned(
@@ -141,7 +144,7 @@ class CorePage extends StatelessWidget {
                       Spacer(),
                       InkWell(
                         onTap: (){
-                          Clipboard.setData(ClipboardData(text: resultController.text));
+                          Clipboard.setData(ClipboardData(text: Get.find<JiangchonController>().resultStr));
                           Get.find<ToastUtilsService>().showText("复制成功");
                         },
                         child: Container(

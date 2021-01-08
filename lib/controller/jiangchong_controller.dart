@@ -8,6 +8,7 @@ class JiangchonController extends GetxController{
 
   final inputTextNumber = 0.obs;
   final resultTextNumber = 0.obs;
+  String resultStr = "";
 
   changeTextNumber(int number){
     inputTextNumber(number);
@@ -24,7 +25,8 @@ class JiangchonController extends GetxController{
         JiangchongResult result = JiangchongResult.fromJson(data);
         if (result.code == 200) {
           jiangchongResult(result);
-          targetSentence = result.data.targetSentence;
+          resultStr = targetSentence = result.data.targetSentence;
+          update();
         } else {
           errorResult(result);
         }

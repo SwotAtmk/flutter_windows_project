@@ -33,8 +33,8 @@ class ActivationPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(top: 60,left: 0,bottom: 40),
+                      width: 300,
+                      margin: EdgeInsets.only(top: 60,bottom: 40),
                       child: Text("Hello，欢迎使用",style: TextStyle(color: Color(0xff4296ff),fontSize: 28,fontWeight: FontWeight.w700),),
                     ),
                     Container(
@@ -94,7 +94,7 @@ class ActivationPage extends StatelessWidget {
                     ),
 
                    Container(
-                     width: 200,
+                     width: 300,
                      margin: EdgeInsets.only(top: 20),
                      child:  Row(children: [
                        InkWell(
