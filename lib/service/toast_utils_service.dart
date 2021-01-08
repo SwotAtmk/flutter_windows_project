@@ -17,13 +17,26 @@ class ToastUtilsService{
   /// 显示默认Text
   CancelFunc showText(textContent) => BotToast.showText(text:textContent, align: Alignment(x,y));
 
-  CancelFunc showLoading() => BotToast.showLoading();
+  CancelFunc showLoading() {
+    return BotToast.showCustomLoading(
+        clickClose: true,
+        allowClick: true,
+        backButtonBehavior: BackButtonBehavior.none,
+        ignoreContentClick: false,
+        animationDuration: Duration(milliseconds: 200),
+        animationReverseDuration: Duration(milliseconds: 200),
+        duration: null,
+        backgroundColor: Color(0x42000000),
+        align: Alignment.center,
+        toastBuilder: (cancelFunc) {
+          return _CustomLoadWidget(cancelFunc: cancelFunc);
+        });
+  }
 
   void removeAll() => BotToast.removeAll();
 
-  CancelFunc showPromptBox(Text text,{VoidCallback cancel,VoidCallback confirm,VoidCallback backgroundReturn}){
-    return showAlertDialog(text,BackButtonBehavior.none, cancel:cancel, confirm:confirm , backgroundReturn: backgroundReturn);
-  }
+  CancelFunc showPromptBox(Text text,{VoidCallback cancel,VoidCallback confirm,VoidCallback backgroundReturn}) => showAlertDialog(text,BackButtonBehavior.none, cancel:cancel, confirm:confirm , backgroundReturn: backgroundReturn);
+
   CancelFunc showAlertDialog(Text text,BackButtonBehavior backButtonBehavior,
       {VoidCallback cancel,
         VoidCallback confirm,
@@ -120,6 +133,68 @@ class _CustomOffsetAnimationState extends State<CustomOffsetAnimation> {
               ),
             ));
       },
+    );
+  }
+}
+
+class _CustomLoadWidget extends StatefulWidget {
+  final CancelFunc cancelFunc;
+
+  const _CustomLoadWidget({Key key, this.cancelFunc}) : super(key: key);
+
+  @override
+  __CustomLoadWidgetState createState() => __CustomLoadWidgetState();
+}
+
+class __CustomLoadWidgetState extends State<_CustomLoadWidget>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+
+  @override
+  void initState() {
+    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+
+    animationController.addStatusListener((AnimationStatus status) {
+      if (status == AnimationStatus.completed) {
+        animationController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        animationController.forward();
+      }
+    });
+    animationController.forward();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            FadeTransition(
+              opacity: animationController,
+              child: IconButton(
+                icon: Icon(Icons.archive, color: Color(0xff4296ff), size: 30),
+                onPressed: (){
+
+                },
+              ),
+            ),
+            Text(
+              "正在去重中",
+            )
+          ],
+        ),
+      ),
     );
   }
 }

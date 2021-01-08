@@ -12,7 +12,7 @@ class CorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: EdgeInsets.only(top: 15,left: 15,right: 15),
       child: Column(
         children: [
           Stack(
@@ -78,7 +78,7 @@ class CorePage extends StatelessWidget {
                       InkWell(
                         onTap: (){
                           var closeFunc = Get.find<ToastUtilsService>().showLoading();
-                          Future.delayed(Duration(seconds: 5),(){
+                          Future.delayed(Duration(seconds: 30),(){
                             if(closeFunc != null){
                               closeFunc();
                               Get.find<ToastUtilsService>().showText("服务器繁忙……");
@@ -112,7 +112,7 @@ class CorePage extends StatelessWidget {
             children: [
               Container(
                 width: 770,
-                height: 265,
+                height: 240,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(6),
@@ -165,6 +165,11 @@ class CorePage extends StatelessWidget {
                 bottom: 0,
               )
             ],
+          ),
+          Container(
+            alignment: Alignment.center,
+            height: 35,
+            child: Text("高峰期，去重的人数比较多，所以去重反馈时间较长，如果您的去重没有及时反馈，请耐心等候！",style: TextStyle(color: Color(0xff999999)),),
           )
         ],
       ),
