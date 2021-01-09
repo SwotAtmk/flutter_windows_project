@@ -12,10 +12,12 @@ class LogService{
   static const INFO_LOG = "info.log";
 
   String logDirectory = "";
+  String currentDirectory = Directory.current.path;
 
   Future<LogService> init() async{
     DateTime nowDateTime = DateTime.now();
-    logDirectory = "${Directory.current.path}\\log\\"+ dateToYMD(nowDateTime);
+    folderExists(currentDirectory+"\\log");
+    logDirectory = "${currentDirectory}\\log\\"+ dateToYMD(nowDateTime);
     folderExists(logDirectory);
     return this;
   }
