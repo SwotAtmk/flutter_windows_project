@@ -4,7 +4,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:win32/win32.dart';
 import 'package:get/get.dart';
 import 'package:flutter_update_dialog/flutter_update_dialog.dart';
-import '../service/service_register.dart' show DioService, ToastUtilsService;
+import '../service/service_register.dart' show DioService, ToastUtilsService, LogService;
 
 /// 软件更新服务
 class UpdateApplicationService {
@@ -32,10 +32,14 @@ class UpdateApplicationService {
 
   /// 执行更新
   void executeUpdate(String url, String saveDir, String saveFileName) {
-    DioService().downloadFile(url, saveDir + saveFileName).then((value) {
-      ShellExecute(
-          0, TEXT("open"), TEXT(saveFileName), nullptr, TEXT(saveDir), SW_SHOW);
-    });
+    try {
+      DioService().downloadFile(url, saveDir + saveFileName).then((value) {
+        ShellExecute(0, TEXT("open"), TEXT(saveFileName), nullptr, TEXT(saveDir), SW_SHOW);
+      });
+    }catch(e){
+      Get.find<LogService>().error("软件更新失败");
+    }
+
   }
 
   /// 显示更新视图
@@ -60,10 +64,12 @@ class UpdateApplicationService {
         ignoreButtonText: '忽略此版本',
         enableIgnore: true,
         onIgnore: () {
+          Get.find<LogService>().operation("忽略更新");
           Get.find<ToastUtilsService>().showText("已忽略此次更新");
           dialog.dismiss();
         },
         onUpdate: () {
+          Get.find<LogService>().operation("下载更新");
           Get.find<ToastUtilsService>().showText("正在下载更新……");
           executeUpdate(info["applicationDownloadUrl"], "./update/", "update_file_" + new DateTime.now().millisecondsSinceEpoch.toString() + ".exe");
           dialog.dismiss();
@@ -81,10 +87,12 @@ class UpdateApplicationService {
     String transitionOldVersion="", transitionNewVersion="";
     for(int i = 0; i<oldList.length; i++){
       if(oldList[i].length > 1 && newList[i].length <= 1){
-        newList[i] = "0" * (oldList[i].length - newList[i].length) + newList[i];
+        // newList[i] = "0" * (oldList[i].length - newList[i].length) + newList[i];
+        newList[i].padLeft(oldList[i].length,"0");
       }
       if(oldList[i].length <= 1 && newList[i].length >1){
-        oldList[i] = "0" * (newList[i].length - oldList[i].length) + oldList[i];
+        // oldList[i] = "0" * (newList[i].length - oldList[i].length) + oldList[i];
+        oldList[i].padLeft(newList[i].length,"0");
       }
       transitionOldVersion +=  oldList[i];
       transitionNewVersion += newList[i];

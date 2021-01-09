@@ -7,6 +7,10 @@ const domainJaneName = "taow";
 
 const isHttps = true;
 
+const purchaseLink = "https://item.taobao.com/item.htm?spm=a2oq0.12575281.0.0.399f1debA41FBD&ft=t&id=635922041258"; /// 卡密购买链接
+const forgetCARDSClose = ""; /// 忘记卡密链接
+const reducedWordLimit = 200;  ///降重字数限制
+
 const  List<Map<String, String>> checkSystemList = [
   {
     "janeName": "wanfang",

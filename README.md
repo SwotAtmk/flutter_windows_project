@@ -34,7 +34,7 @@
     6、使用前验证软件激活状态   √
     7、激活状态存入本地持久化   √
     8、对接后端降重接口         √
-    9、本地日志记录            × 待完善
+    9、本地日志记录            √ 待完善
    10、降重历史记录            × 待完善
    11、启动页                  × 待完善
 
@@ -110,6 +110,7 @@
     /windows/runner/Runner.rc -> 项目配置文件，包括配置图标、版本号、应用信息等
     /pubspec.yaml -> 配置文件
     /README.md -> 项目说明文档
+    /log/~ -> 日志目录
     /packaged/innosetup-6.1.2.exe -> inno软件打包安装工具
     /packaged/ChinesSimplified.isl -> 打包软件中文简体字库
     

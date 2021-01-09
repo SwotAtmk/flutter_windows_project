@@ -2,10 +2,9 @@
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:essay_writing_tool/service/service_register.dart' show DioService,ToastUtilsService;
+import 'package:essay_writing_tool/service/service_register.dart' show ToastUtilsService,LaunchUrlService,LogService;
 import '../controller/controller_register.dart' show PagesController;
-import "../model/bindip_model.dart";
-import 'dart:convert';
+import '../config/system_config.dart';
 
 class ActivationPage extends StatelessWidget {
   @override
@@ -73,6 +72,7 @@ class ActivationPage extends StatelessWidget {
                     InkWell(
                       onTap: (){
                         String activationCode = editController.text;
+                        Get.find<LogService>().operation("去激活软件：${activationCode}");
                         Get.find<PagesController>().activationApplication(activationCode).then((value){
                           if(value["isSuccess"]){
                             Get.find<ToastUtilsService>().showText("软件激活成功");
@@ -99,14 +99,16 @@ class ActivationPage extends StatelessWidget {
                      child:  Row(children: [
                        InkWell(
                          onTap: (){
-                           print("去购买");
+                           Get.find<LogService>().operation("去购买激活码！");
+                           LaunchUrlService.launchURL(purchaseLink);
                          },
                          child: Text("去购买",style: TextStyle(color: Color(0xff4296ff), decoration: TextDecoration.underline,),),
                        ),
                        Spacer(),
                        InkWell(
                          onTap: (){
-                           print("忘记卡密？");
+                           Get.find<LogService>().operation("去购买激活码！");
+                           LaunchUrlService.launchURL(forgetCARDSClose);
                          },
                          child: Text("忘记卡密？",style: TextStyle(color: Color(0xff4296ff), ),),
                        ),

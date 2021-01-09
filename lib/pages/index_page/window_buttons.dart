@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // ignore: implementation_imports
 import 'package:bitsdojo_window/src/widgets/mouse_state_builder.dart';
+import '../../service/log_service.dart';
+import 'package:get/get.dart';
 
 const _closeIcon = """
 <svg xmlns="http://www.w3.org/2000/svg" t="1610007577754" class="icon" viewBox="0 0 1024 1024" version="1.1" p-id="9970" width="200" height="200"><defs></defs><path d="M505.173333 416.426666 122.88 27.306666c-27.306667-27.306667-68.266667-27.306667-102.4 0l0 0c-27.306667 27.306667-27.306667 68.266667 0 102.4L409.6 512l-389.12 389.12c-27.306667 27.306667-27.306667 68.266667 0 102.4l0 0c27.306667 27.306667 68.266667 27.306667 102.4 0l389.12-389.12 389.12 389.12c27.306667 27.306667 68.266667 27.306667 102.4 0l0 0c27.306667-27.306667 27.306667-68.266667 0-102.4L607.573333 512l389.12-389.12c27.306667-27.306667 27.306667-68.266667 0-102.4l0 0c-27.306667-27.306667-68.266667-27.306667-102.4 0L505.173333 416.426666 505.173333 416.426666z" p-id="9971"/></svg>
@@ -38,6 +40,7 @@ class WindowButtons extends StatelessWidget {
             );
           },
           onPressed: (){
+            Get.find<LogService>().operation("最小化程序");
             appWindow.minimize(); // 窗口最小化
           },
         ),
@@ -68,6 +71,7 @@ class WindowButtons extends StatelessWidget {
               );
           },
           onPressed: (){
+            Get.find<LogService>().operation("退出程序");
             appWindow.close(); // 窗口关闭
           },
         ),

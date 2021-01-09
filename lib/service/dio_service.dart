@@ -1,6 +1,7 @@
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'dart:async';
+import 'log_service.dart';
 import 'package:get/get.dart' hide Response;
 
 class DioService extends GetxService {
@@ -48,7 +49,7 @@ class DioService extends GetxService {
         throw Exception("接口异常");
       }
     } catch (e) {
-      print('ERROR:>>>>>>>>>>>>>>>${e}');
+      Get.find<LogService>().error(e.toString());
     }
   }
 
@@ -63,7 +64,7 @@ class DioService extends GetxService {
         throw Exception("接口异常");
       }
     } catch (e) {
-      print('ERROR:>>>>>>>>>>>>>>>${e}');
+      Get.find<LogService>().error(e.toString());
     }
   }
 
@@ -78,17 +79,12 @@ class DioService extends GetxService {
         throw Exception("接口异常");
       }
     } catch (e) {
+      Get.find<LogService>().error(e.toString());
       return errorReturn;
     }
   }
 
   Future<Response> downloadFile(String url,String savePath) async {
-    return await dio.download(url, savePath,
-        // onReceiveProgress: (received, total) { /// 文件下载进度
-        //   if (total != -1) {
-        //     print((received / total * 100).toStringAsFixed(0) + "%");
-        //   }
-        // }
-    );
+    return await dio.download(url, savePath);
   }
 }

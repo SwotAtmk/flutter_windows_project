@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../pages/pages_register.dart' show CorePage,PaperCheckPage,ActivationPage;
-import '../service/service_register.dart' show SharedPreferencesService,DioService,ToastUtilsService;
+import '../service/service_register.dart' show SharedPreferencesService,DioService,ToastUtilsService,LogService;
 import '../model/bindip_model.dart';
 
 class PagesController extends GetxController
@@ -46,8 +46,7 @@ class PagesController extends GetxController
         update();
 
       }else{
-
-        print("删除验证码失败!!!");
+        Get.find<LogService>().operation("退出激活登录",operationObjectName: "PagesController 49 line");
       }
 
     });
@@ -114,10 +113,14 @@ class PagesController extends GetxController
           currentPageIndex = CORE_PAGE_INDEX;
           Get.find<SharedPreferencesService>().setString(activationCodeKey, activationCode);
         }else{
+          Get.find<LogService>().info("软件未激活");
           currentPageIndex = ACTIVATION_PAGE_INDEX;
         }
       });
-    } else currentPageIndex = ACTIVATION_PAGE_INDEX;
+    } else{
+      Get.find<LogService>().info("软件未激活");
+      currentPageIndex = ACTIVATION_PAGE_INDEX;
+    }
     update();
     return isActivate;
   }
@@ -134,9 +137,11 @@ class PagesController extends GetxController
         currentPageIndex = CORE_PAGE_INDEX;
         Get.find<SharedPreferencesService>().setString(activationCodeKey, activationCode);
         isSuccess = true;
+        Get.find<LogService>().info("软件剩余：${bindipModel.data.surplusDay} 天");
         update();
       }else{
         codeMsg = bindipModel.codeMsg;
+        Get.find<LogService>().warn(codeMsg);
       }
     });
     return {"isSuccess":isSuccess,"codeMsg":codeMsg};

@@ -32,13 +32,13 @@ class CorePage extends StatelessWidget {
                   },
                   autofocus: true,
                   inputFormatters: [
-                    LengthLimitingTextInputFormatter(600)
+                    LengthLimitingTextInputFormatter(200)
                   ],
                   keyboardType: TextInputType.text,
                   showCursor:true,
                   cursorColor: Color(0xff4296ff),
                   decoration: InputDecoration(
-                      hintText: "输入需要降重的文字，单句不能少于5个字符，最多可输入600个字符",
+                      hintText: "输入需要降重的文字，单句不能少于5个字符，最多可输入200个字符",
                       hintStyle: TextStyle(color:Color(0xffbdbdbd),fontSize: 14),
                       border: OutlineInputBorder(borderSide: BorderSide.none,), /// borderSide: BorderSide(width: 0.1,color: Color(0xff4296ff))
                       contentPadding: EdgeInsets.all(28)
@@ -57,10 +57,11 @@ class CorePage extends StatelessWidget {
                     children: [
                       SizedBox(width: 20,),
                       Obx(() => Text(Get.find<JiangchonController>().inputTextNumber.toString(),style: TextStyle(fontSize: 14,color: Color(0xff81b4ff)),)),
-                      Text("/600字",style: TextStyle(fontSize: 14,color: Color(0xffbdbdbd)),),
+                      Text("/200字",style: TextStyle(fontSize: 14,color: Color(0xffbdbdbd)),),
                       Spacer(),
                       InkWell(
                         onTap: (){
+                          Get.find<LogService>().operation("清空输入框中内容。");
                           Get.find<JiangchonController>().changeTextNumber(0);
                           editController.clear();
                         },
@@ -77,6 +78,7 @@ class CorePage extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: (){
+                          Get.find<LogService>().operation("一键去重");
                           var closeFunc = Get.find<ToastUtilsService>().showLoading();
                           Future.delayed(Duration(seconds: 30),(){
                             if(closeFunc != null){
@@ -144,6 +146,7 @@ class CorePage extends StatelessWidget {
                       Spacer(),
                       InkWell(
                         onTap: (){
+                          Get.find<LogService>().operation("复制降重结果内容");
                           Clipboard.setData(ClipboardData(text: Get.find<JiangchonController>().resultStr));
                           Get.find<ToastUtilsService>().showText("复制成功");
                         },

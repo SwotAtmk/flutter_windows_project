@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../config/system_config.dart';
-import '../service/service_register.dart' show LaunchUrlService,ToastUtilsService;
+import '../service/service_register.dart' show LaunchUrlService,ToastUtilsService,LogService;
 import 'package:get/get.dart';
 // ignore: implementation_imports
 import 'package:bitsdojo_window/src/widgets/mouse_state_builder.dart';
@@ -115,6 +115,7 @@ class PaperCheckPage extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
+                      Get.find<LogService>().operation("跳转外链网页店铺");
                       Get.find<ToastUtilsService>().showPromptBox(Text("该广告链接与本软件及淘宝店无关，该功能需要另外付费！", style: TextStyle(fontSize: 12,color: Colors.black),), confirm: (){
                         LaunchUrlService.launchURL(jumpLink);
                       });

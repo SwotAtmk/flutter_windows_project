@@ -33,9 +33,30 @@ class ToastUtilsService{
         });
   }
 
-  void removeAll() => BotToast.removeAll();
+  void removeAll(String groupKey) => BotToast.removeAll(groupKey);
+
+  void cleanAll() => BotToast.cleanAll();
 
   CancelFunc showPromptBox(Text text,{VoidCallback cancel,VoidCallback confirm,VoidCallback backgroundReturn}) => showAlertDialog(text,BackButtonBehavior.none, cancel:cancel, confirm:confirm , backgroundReturn: backgroundReturn);
+
+  // ignore: missing_return
+  CancelFunc showMenuBox(BuildContext context, {@required Widget child}){
+    return BotToast.showAttachedWidget(
+        attachedBuilder: (_) => Card(
+          color: Colors.white,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+            child: child
+          ),
+        ),
+        wrapToastAnimation: (controller, cancel, Widget child) => CustomAttachedAnimation(controller: controller, child: child,),
+        animationDuration: Duration(milliseconds: 300),
+        enableSafeArea: false,
+        duration: null,
+        targetContext: context
+    );
+  }
+
 
   CancelFunc showAlertDialog(Text text,BackButtonBehavior backButtonBehavior,
       {VoidCallback cancel,
@@ -86,6 +107,8 @@ class ToastUtilsService{
   }
 }
 
+
+/// 弹窗动画
 class CustomOffsetAnimation extends StatefulWidget {
   final AnimationController controller;
   final Widget child;
@@ -137,6 +160,8 @@ class _CustomOffsetAnimationState extends State<CustomOffsetAnimation> {
   }
 }
 
+
+/// 降重操作动画
 class _CustomLoadWidget extends StatefulWidget {
   final CancelFunc cancelFunc;
 
@@ -195,6 +220,55 @@ class __CustomLoadWidgetState extends State<_CustomLoadWidget>
           ],
         ),
       ),
+    );
+  }
+}
+
+
+/// 菜单动画
+class CustomAttachedAnimation extends StatefulWidget {
+  final AnimationController controller;
+  final Widget child;
+
+  const CustomAttachedAnimation({Key key, this.controller, this.child})
+      : super(key: key);
+
+  @override
+  _CustomAttachedAnimationState createState() =>
+      _CustomAttachedAnimationState();
+}
+
+class _CustomAttachedAnimationState extends State<CustomAttachedAnimation> {
+  Animation<double> animation;
+  static final Tween<Offset> tweenOffset = Tween<Offset>(
+    begin: const Offset(0, 40),
+    end: const Offset(0, 0),
+  );
+
+  @override
+  void initState() {
+    animation =
+        CurvedAnimation(parent: widget.controller, curve: Curves.decelerate);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      child: widget.child,
+      animation: widget.controller,
+      builder: (BuildContext context, Widget child) {
+        return ClipRect(
+          child: Align(
+            heightFactor: animation.value,
+            widthFactor: animation.value,
+            child: Opacity(
+              opacity: animation.value,
+              child: child,
+            ),
+          ),
+        );
+      },
     );
   }
 }

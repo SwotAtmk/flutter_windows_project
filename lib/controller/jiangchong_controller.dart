@@ -1,5 +1,6 @@
 import "package:get/get.dart" hide Response;
-import 'package:essay_writing_tool/service/dio_service.dart';
+import 'package:essay_writing_tool/service/service_register.dart' show DioService,LogService;
+import 'package:get/get.dart';
 import '../model/jiangchong_result.dart';
 
 class JiangchonController extends GetxController{
@@ -26,14 +27,16 @@ class JiangchonController extends GetxController{
         if (result.code == 200) {
           jiangchongResult(result);
           resultStr = targetSentence = result.data.targetSentence;
+          Get.find<LogService>().info("降重成功：${sentence}->${resultStr}");
           update();
         } else {
+          Get.find<LogService>().error("降重失败：${result.codeMsg}");
           errorResult(result);
         }
       });
       return targetSentence;
     } catch (e) {
-      print('ERROR:>>>>>>>>>>>>>>>${e}');
+      Get.find<LogService>().error(e.toString());
       return "";
     }
   }

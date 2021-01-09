@@ -1,10 +1,10 @@
+import 'package:essay_writing_tool/service/log_service.dart';
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:essay_writing_tool/routes/main_route.dart';
 import 'package:get/get.dart';
 import 'service/service_register.dart';
 import 'package:bot_toast/bot_toast.dart';
-import 'controller/controller_register.dart' show PagesController;
 
 Future main() async {
   await initServices();
@@ -27,6 +27,7 @@ Future initServices() async {
   await Get.putAsync(() => ToastUtilsService().init(0.0,0.8)); /// 初始化提示框服务
   await Get.putAsync(() => SharedPreferencesService().init()); /// 数据持久化服务
   await Get.putAsync(() => UpdateApplicationService().init()); /// 软件更新服务
+  await Get.putAsync(() => LogService().init());               /// 日志服务
 }
 
 
