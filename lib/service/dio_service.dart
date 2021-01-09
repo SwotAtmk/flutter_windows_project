@@ -49,7 +49,7 @@ class DioService extends GetxService {
         throw Exception("接口异常");
       }
     } catch (e) {
-      Get.find<LogService>().error(e.toString());
+      Get.find<LogService>().error("reuqestUrl -> ${path}"+e.toString());
     }
   }
 
@@ -64,7 +64,7 @@ class DioService extends GetxService {
         throw Exception("接口异常");
       }
     } catch (e) {
-      Get.find<LogService>().error(e.toString());
+      Get.find<LogService>().error("reuqestUrl -> ${path}"+e.toString());
     }
   }
 
@@ -79,12 +79,13 @@ class DioService extends GetxService {
         throw Exception("接口异常");
       }
     } catch (e) {
-      Get.find<LogService>().error(e.toString());
+      Get.find<LogService>().error("reuqestUrl -> ${path}"+e.toString());
       return errorReturn;
     }
   }
 
   Future<Response> downloadFile(String url,String savePath) async {
+    Get.find<LogService>().error("downloadFileUrl -> ${url}");
     return await dio.download(url, savePath);
   }
 }

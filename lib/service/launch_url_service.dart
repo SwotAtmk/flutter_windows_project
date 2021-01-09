@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class LaunchUrlService {
   static launchURL(url) async{
     try{
+      Get.find<LogService>().info("LaunchUrl: ${url}");
       if(await canLaunch(url)){ // 验证url是否可发射
         await launch(url); // 发射url
       }else{

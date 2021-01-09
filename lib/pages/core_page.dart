@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:essay_writing_tool/controller/controller_register.dart' show JiangchonController,PagesController;
 import 'package:get/get.dart';
 import 'package:essay_writing_tool/service/service_register.dart';
+import '../config/system_config.dart';
 
 // ignore: must_be_immutable
 class CorePage extends StatelessWidget {
@@ -32,13 +33,13 @@ class CorePage extends StatelessWidget {
                   },
                   autofocus: true,
                   inputFormatters: [
-                    LengthLimitingTextInputFormatter(200)
+                    LengthLimitingTextInputFormatter(reducedWordLimit)
                   ],
                   keyboardType: TextInputType.text,
                   showCursor:true,
                   cursorColor: Color(0xff4296ff),
                   decoration: InputDecoration(
-                      hintText: "输入需要降重的文字，单句不能少于5个字符，最多可输入200个字符",
+                      hintText: "输入需要降重的文字，单句不能少于5个字符，最多可输入${reducedWordLimit}个字符",
                       hintStyle: TextStyle(color:Color(0xffbdbdbd),fontSize: 14),
                       border: OutlineInputBorder(borderSide: BorderSide.none,), /// borderSide: BorderSide(width: 0.1,color: Color(0xff4296ff))
                       contentPadding: EdgeInsets.all(28)
@@ -57,7 +58,7 @@ class CorePage extends StatelessWidget {
                     children: [
                       SizedBox(width: 20,),
                       Obx(() => Text(Get.find<JiangchonController>().inputTextNumber.toString(),style: TextStyle(fontSize: 14,color: Color(0xff81b4ff)),)),
-                      Text("/200字",style: TextStyle(fontSize: 14,color: Color(0xffbdbdbd)),),
+                      Text("/${reducedWordLimit}字",style: TextStyle(fontSize: 14,color: Color(0xffbdbdbd)),),
                       Spacer(),
                       InkWell(
                         onTap: (){
@@ -87,7 +88,10 @@ class CorePage extends StatelessWidget {
                             }
                           });
                           Get.find<JiangchonController>().getJiangchongResult(editController.text,Get.find<PagesController>().getActivationCode()).then((value){
-                           Get.find<JiangchonController>().changeResultTextNumber(value.length);
+                            if(value == null || value == ""){
+                              Get.find<LogService>().warn("返回空结果集");
+                            }
+                           Get.find<JiangchonController>().changeResultTextNumber(value?.length);
                            closeFunc();
                           });
                         },

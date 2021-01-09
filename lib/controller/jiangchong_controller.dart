@@ -1,5 +1,5 @@
 import "package:get/get.dart" hide Response;
-import 'package:essay_writing_tool/service/service_register.dart' show DioService,LogService;
+import 'package:essay_writing_tool/service/service_register.dart' show DioService,LogService,ToastUtilsService;
 import 'package:get/get.dart';
 import '../model/jiangchong_result.dart';
 
@@ -12,16 +12,16 @@ class JiangchonController extends GetxController{
   String resultStr = "";
 
   changeTextNumber(int number){
-    inputTextNumber(number);
+    inputTextNumber((number!=null)?number:0);
   }
 
   changeResultTextNumber(int number){
-    resultTextNumber(number);
+    resultTextNumber((number!=null)?number:0);
   }
 
   Future<String> getJiangchongResult(String sentence, String _token) async {
     try {
-      String targetSentence;
+      String targetSentence = "";
       await Get.find<DioService>().post("https://www.zaojiangchong.com/api/rewrite/result",param: {"code":_token,"sentence": sentence},contentType: "application/json").then((data){
         JiangchongResult result = JiangchongResult.fromJson(data);
         if (result.code == 200) {
@@ -31,6 +31,7 @@ class JiangchonController extends GetxController{
           update();
         } else {
           Get.find<LogService>().error("降重失败：${result.codeMsg}");
+          Get.find<ToastUtilsService>().showText(result.codeMsg!=null?result.codeMsg:"空字符");
           errorResult(result);
         }
       });
