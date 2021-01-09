@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(zaojiangchong_project LANGUAGES CXX)
+project(essay_writing_tool LANGUAGES CXX)
 
-set(BINARY_NAME "zaojiangchong_project")
+set(BINARY_NAME "essay_writing_tool")
 
 cmake_policy(SET CMP0063 NEW)
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zaojiangchong_project/controller/pages_controller.dart';
+import 'package:essay_writing_tool/controller/pages_controller.dart';
 import '../../controller/controller_register.dart' show PagesController;
 import '../../config/system_config.dart';
 

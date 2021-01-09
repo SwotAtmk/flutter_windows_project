@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:zaojiangchong_project/routes/main_route.dart';
+import 'package:essay_writing_tool/routes/main_route.dart';
 import 'package:get/get.dart';
 import 'service/service_register.dart';
 import 'package:bot_toast/bot_toast.dart';

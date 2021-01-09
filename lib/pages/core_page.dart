@@ -1,9 +1,9 @@
 /// 主要降重功能页
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zaojiangchong_project/controller/controller_register.dart' show JiangchonController,PagesController;
+import 'package:essay_writing_tool/controller/controller_register.dart' show JiangchonController,PagesController;
 import 'package:get/get.dart';
-import 'package:zaojiangchong_project/service/service_register.dart';
+import 'package:essay_writing_tool/service/service_register.dart';
 
 // ignore: must_be_immutable
 class CorePage extends StatelessWidget {

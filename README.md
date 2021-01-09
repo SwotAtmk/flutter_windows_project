@@ -1,4 +1,4 @@
-# zaojiangchong_project
+# EWT（即：EssayWritingTool）论文写作助手
 
     Flutter for windows开发论文写作助手，后期考虑移植到mac、linux终端
 
@@ -121,3 +121,4 @@
     某些特殊的操作需要页面被构建完成之后执行，可以用Future.delayed做一个延迟操作。
     暂时不支持版本号超过3位 -> 正例：1.0.1  √  <-----> 反例：1.0.0.1  × 。
     程序运行时会出现usound null safety（即：空安全）的问题，看了下文档dart，暂时没发现影响程序正常运行的情况。
+    windows 项目名更新为 -> essay_writing_tool （简称：EWT） android 及ios未修改，任然为zaojiangchong_project

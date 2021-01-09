@@ -1,5 +1,5 @@
 import "package:get/get.dart" hide Response;
-import 'package:zaojiangchong_project/service/dio_service.dart';
+import 'package:essay_writing_tool/service/dio_service.dart';
 import '../model/jiangchong_result.dart';
 
 class JiangchonController extends GetxController{

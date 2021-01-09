@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zaojiangchong_project/service/dio_service.dart';
+import 'package:essay_writing_tool/service/dio_service.dart';
 
 class TestPage extends StatelessWidget {
   @override

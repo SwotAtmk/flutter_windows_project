@@ -33,7 +33,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 
   Win32Window::Point origin(0, 0);
   Win32Window::Size size(987, 598); //Default Settings for window width and height:(1280,720)
-  if (!window.CreateAndShow(L"zaojiangchong_project", origin, size)) {
+  if (!window.CreateAndShow(L"essay_writing_tool", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);

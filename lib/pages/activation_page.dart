@@ -2,7 +2,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:zaojiangchong_project/service/service_register.dart' show DioService,ToastUtilsService;
+import 'package:essay_writing_tool/service/service_register.dart' show DioService,ToastUtilsService;
 import '../controller/controller_register.dart' show PagesController;
 import "../model/bindip_model.dart";
 import 'dart:convert';
