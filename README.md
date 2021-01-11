@@ -123,3 +123,6 @@
     暂时不支持版本号超过3位 -> 正例：1.0.1  √  <-----> 反例：1.0.0.1  × 。
     程序运行时会出现usound null safety（即：空安全）的问题，看了下文档dart，暂时没发现影响程序正常运行的情况。
     windows 项目名更新为 -> essay_writing_tool （简称：EWT） android 及ios未修改，任然为zaojiangchong_project
+   
+# 特别提示：
+    对windows7兼容适配需要找到/windows/flutter/ephemeral/.plugin_symlinks/windows/bitsdojo_windows.cpp 文件getResizeMargin方法改为return 0; 注释getSizeOnScreen方法中的内容
