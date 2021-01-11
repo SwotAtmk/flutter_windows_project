@@ -126,3 +126,4 @@
    
 # 特别提示：
     对windows7兼容适配需要找到/windows/flutter/ephemeral/.plugin_symlinks/windows/bitsdojo_windows.cpp 文件getResizeMargin方法改为return 0; 注释getSizeOnScreen方法中的内容
+    若出现“无法启动此程序，因为计算机中丢失VCRUNTIME140_1.dll。尝试重新安装该程序以解i决此问题。”需要前往下载系统补丁：https://aka.ms/vs/16/release/vc_redist.x64.exe
