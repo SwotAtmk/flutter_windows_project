@@ -81,12 +81,6 @@ class CorePage extends StatelessWidget {
                         onTap: (){
                           Get.find<LogService>().operation("一键去重");
                           var closeFunc = Get.find<ToastUtilsService>().showLoading();
-                          Future.delayed(Duration(seconds: 30),(){
-                            if(closeFunc != null){
-                              closeFunc();
-                              Get.find<ToastUtilsService>().showText("服务器繁忙……");
-                            }
-                          });
                           Get.find<JiangchonController>().getJiangchongResult(editController.text,Get.find<PagesController>().getActivationCode()).then((value){
                             if(value == null || value == ""){
                               Get.find<LogService>().warn("返回空结果集");

@@ -27,7 +27,7 @@ class JiangchonController extends GetxController{
         if (result.code == 200) {
           jiangchongResult(result);
           resultStr = targetSentence = result.data.targetSentence;
-          Get.find<LogService>().info("降重成功：${sentence}->${resultStr}");
+          Get.find<LogService>().info("降重成功：$sentence -> $resultStr");
           update();
         } else {
           Get.find<LogService>().error("降重失败：${result.codeMsg}");
@@ -37,6 +37,7 @@ class JiangchonController extends GetxController{
       });
       return targetSentence;
     } catch (e) {
+      Get.find<ToastUtilsService>().showText("服务器繁忙……");
       Get.find<LogService>().error(e.toString());
       return "";
     }
