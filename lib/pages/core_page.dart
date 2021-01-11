@@ -29,6 +29,10 @@ class CorePage extends StatelessWidget {
                   controller: editController,
                   maxLines: 8,
                   onChanged: (r){
+                    if(r.length>reducedWordLimit){
+                      r = r.substring(0, reducedWordLimit);
+                      editController.text = r;
+                    }
                     Get.find<JiangchonController>().changeTextNumber(r.length);
                   },
                   autofocus: true,
@@ -39,7 +43,7 @@ class CorePage extends StatelessWidget {
                   showCursor:true,
                   cursorColor: Color(0xff4296ff),
                   decoration: InputDecoration(
-                      hintText: "输入需要降重的文字，单句不能少于5个字符，最多可输入${reducedWordLimit}个字符",
+                      hintText: "输入需要降重的文字，单句不能少于5个字符，最多可输入$reducedWordLimit个字符",
                       hintStyle: TextStyle(color:Color(0xffbdbdbd),fontSize: 14),
                       border: OutlineInputBorder(borderSide: BorderSide.none,), /// borderSide: BorderSide(width: 0.1,color: Color(0xff4296ff))
                       contentPadding: EdgeInsets.all(28)
@@ -139,7 +143,7 @@ class CorePage extends StatelessWidget {
                     children: [
                       SizedBox(width: 20,),
                       Text("降重之后字数统计  ",style: TextStyle(fontSize: 14,color: Color(0xffc3c3c3)),),
-                      Obx(() => Text(Get.find<JiangchonController>().resultTextNumber.toString(),style: TextStyle(fontSize: 14,color: Color(0xff81b4ff)),)),
+                      Obx(() => SelectableText(Get.find<JiangchonController>().resultTextNumber.toString(),style: TextStyle(fontSize: 14,color: Color(0xff81b4ff)),)),
                       Text("  字",style: TextStyle(fontSize: 14,color: Color(0xffc3c3c3)),),
                       Spacer(),
                       InkWell(
