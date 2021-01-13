@@ -6,24 +6,24 @@
     - Jarming
 
 ## 开始：
-   请在本项目目录下执行来拉取项目中用到的插件
+    请在本项目目录下执行来拉取项目中用到的插件
 `flutter pug get`
 
 ## 运行项目：（在windows端）
-`flutter run -d windows` 
-项目运行时执行热加载或局部刷新时需要保持windows窗体在屏幕中显示，不然有可能此次操作不生效，页面不生效的情况请再次摁下R。
+    `flutter run -d windows`      
+    项目运行时执行热加载或局部刷新时需要保持windows窗体在屏幕中显示，不然有可能此次操作不生效，页面不生效的情况请再次摁下R。
 
 ## 构建windows执行文件：
-`flutter build windows` 
-文件将构建到项目目录：/build/windows/runner/Release
-将此目录中的文件提取出来，用开源打包工具Inno打包。 
-*.iss配置文件后续会添加到项目中方便构建时使用
+    `flutter build windows` 
+    文件将构建到项目目录：/build/windows/runner/Release
+    将此目录中的文件提取出来，用开源打包工具Inno打包。 
+    *.iss配置文件后续会添加到项目中方便构建时使用
 
 ## 系统底层通信：
-1）、构建flutter for windows插件通过管道与C++相互调用。
-`flutter create --template plugin --platforms windows hello_plugin`
-2）、通过ffi与底层系统交互 
-3）、通过win32 Api
+    1）、构建flutter for windows插件通过管道与C++相互调用。
+    `flutter create --template plugin --platforms windows hello_plugin`
+    2）、通过ffi与底层系统交互 
+    3）、通过win32 Api
 
 ## 项目功能及说明：
     1、应用激活功能            √
