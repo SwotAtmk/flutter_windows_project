@@ -23,6 +23,7 @@ Future main() async {
 
 /// 初始化服务
 Future initServices() async {
+  await Get.putAsync(() => SystemConfigService().init());      /// 系统配置服务
   await Get.putAsync(() => DioService().init());               /// 初始化Dio服务
   await Get.putAsync(() => ToastUtilsService().init(0.0,0.8)); /// 初始化提示框服务
   await Get.putAsync(() => SharedPreferencesService().init()); /// 数据持久化服务

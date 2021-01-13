@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'dart:async';
 
-class LogService{
+import 'package:essay_writing_tool/util/toolsWith.dart';
+
+class LogService with ToolsWith{
 
   static const OPERATION_LOG = "operation.log";  /// 操作日志
 
@@ -12,12 +14,11 @@ class LogService{
   static const INFO_LOG = "info.log";
 
   String logDirectory = "";
-  String currentDirectory = Directory.current.path;
 
   Future<LogService> init() async{
     DateTime nowDateTime = DateTime.now();
-    folderExists(currentDirectory+"\\log");
-    logDirectory = "${currentDirectory}\\log\\"+ dateToYMD(nowDateTime);
+    folderExists(currentDirectory+ds+"log");
+    logDirectory = "${currentDirectory}${ds}log"+ds+ dateToYMD(nowDateTime);
     folderExists(logDirectory);
     return this;
   }
@@ -28,7 +29,7 @@ class LogService{
   }
 
   error(String log, {String errorObjectName}) {
-    String _logDirectory = logDirectory.isEmpty?"${Directory.current.path}\\log":logDirectory;
+    String _logDirectory = logDirectory.isEmpty?"${Directory.current.path}${ds}log":logDirectory;
     folderExists(_logDirectory);
     getFile(_logDirectory,ERROR_LOG).then((errorFile){
       writeLogIn("["+new DateTime.now().toString()+"]  ERROR -> ${errorObjectName}: " + log+"\n", errorFile);
@@ -36,7 +37,7 @@ class LogService{
   }
 
   warn(String log,{String warnObjectName}) {
-    String _logDirectory = logDirectory.isEmpty?"${Directory.current.path}\\log":logDirectory;
+    String _logDirectory = logDirectory.isEmpty?"${Directory.current.path}${ds}log":logDirectory;
     folderExists(_logDirectory);
     getFile(_logDirectory,WARN_LOG).then((warnFile){
       writeLogIn("["+new DateTime.now().toString()+"]  WARN -> ${warnObjectName}: " + log+"\n", warnFile);
@@ -44,7 +45,7 @@ class LogService{
   }
 
   operation(String log,{String operationObjectName=""}) {
-    String _logDirectory = logDirectory.isEmpty?"${Directory.current.path}\\log":logDirectory;
+    String _logDirectory = logDirectory.isEmpty?"${Directory.current.path}${ds}log":logDirectory;
     folderExists(_logDirectory);
     getFile(_logDirectory,OPERATION_LOG).then((operationFile){
       writeLogIn("["+new DateTime.now().toString()+"]  OPERATION -> ${operationObjectName}: " + log+"\n", operationFile);
@@ -52,37 +53,11 @@ class LogService{
   }
 
   info(String log){
-    String _logDirectory = logDirectory.isEmpty?"${Directory.current.path}\\log":logDirectory;
+    String _logDirectory = logDirectory.isEmpty?"${Directory.current.path}${ds}log":logDirectory;
     folderExists(_logDirectory);
     getFile(_logDirectory,INFO_LOG).then((operationFile){
       writeLogIn("["+new DateTime.now().toString()+"]  INFO: " + log+"\n", operationFile);
     });
-  }
-
-  folderExists(String filepath) async {
-    var file = Directory(filepath);
-    try {
-      bool exists = await file.exists();
-      if (!exists) {
-        await file.create();
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  Future<File> getFile(String path,String fileName) async {
-    final filePath = path+"\\"+fileName;
-    File file = new File(filePath);
-    bool exists = await file.exists();
-    if(!exists){
-      await file.create();
-    }
-    return file;
-  }
-
-  String dateToYMD(date){
-    return "${date.year.toString()}_${date.month.toString().padLeft(2,'0')}_${date.day.toString().padLeft(2,'0')}";
   }
 
 }

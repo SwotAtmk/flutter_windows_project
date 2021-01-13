@@ -5,3 +5,4 @@ export 'toast_utils_service.dart';
 export 'shared_preferences_service.dart';
 export 'update_application_service.dart';
 export "log_service.dart";
+export 'system_config_service.dart';

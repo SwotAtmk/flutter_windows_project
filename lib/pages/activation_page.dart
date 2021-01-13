@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:essay_writing_tool/service/service_register.dart' show ToastUtilsService,LaunchUrlService,LogService;
 import '../controller/controller_register.dart' show PagesController;
-import '../config/system_config.dart';
+import '../service/system_config_service.dart';
 
 class ActivationPage extends StatelessWidget {
   @override
@@ -100,7 +100,7 @@ class ActivationPage extends StatelessWidget {
                        InkWell(
                          onTap: (){
                            Get.find<LogService>().operation("去购买激活码！");
-                           LaunchUrlService.launchURL(purchaseLink);
+                           LaunchUrlService.launchURL(Get.find<SystemConfigService>().purchaseLink);
                          },
                          child: Text("去购买",style: TextStyle(color: Color(0xff4296ff), decoration: TextDecoration.underline,),),
                        ),
@@ -108,7 +108,7 @@ class ActivationPage extends StatelessWidget {
                        InkWell(
                          onTap: (){
                            Get.find<LogService>().operation("去购买激活码！");
-                           LaunchUrlService.launchURL(forgetCARDSClose);
+                           LaunchUrlService.launchURL(Get.find<SystemConfigService>().forgetCARDSClose);
                          },
                          child: Text("忘记卡密？",style: TextStyle(color: Color(0xff4296ff), ),),
                        ),

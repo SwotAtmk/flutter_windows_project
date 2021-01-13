@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../config/system_config.dart';
+import '../service/system_config_service.dart';
 import '../service/service_register.dart' show LaunchUrlService,ToastUtilsService,LogService;
 import 'package:get/get.dart';
 // ignore: implementation_imports
@@ -9,6 +9,7 @@ import 'package:bitsdojo_window/src/widgets/mouse_state_builder.dart';
 class PaperCheckPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var checkSystemInfoList = Get.find<SystemConfigService>().checkSystemInfoList;
     return Stack(
       children: [
         Container(
@@ -26,7 +27,7 @@ class PaperCheckPage extends StatelessWidget {
                 ),
                 GridView.builder(
                     shrinkWrap: true,
-                    itemCount: checkSystemList.length,
+                    itemCount: checkSystemInfoList.length,
                     scrollDirection: Axis.vertical,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -36,10 +37,11 @@ class PaperCheckPage extends StatelessWidget {
                       childAspectRatio: 10 / 9,
                     ),
                     itemBuilder: (context, index) {
-                      return _itemWidget(checkSystemList[index]["name"],
-                          explain: checkSystemList[index]["explain"],
-                          jumpLink: checkSystemList[index]["url"],
-                          logoImage:checkSystemList[index]["logoImage"]);
+
+                      return _itemWidget(checkSystemInfoList[index]["name"],
+                          explain: checkSystemInfoList[index]["explain"],
+                          jumpLink: checkSystemInfoList[index]["url"],
+                          logoImage:checkSystemInfoList[index]["logoImage"]);
                     }),
 
               ],

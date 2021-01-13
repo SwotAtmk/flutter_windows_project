@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:essay_writing_tool/controller/controller_register.dart' show JiangchonController,PagesController;
 import 'package:get/get.dart';
 import 'package:essay_writing_tool/service/service_register.dart';
-import '../config/system_config.dart';
+import '../service/system_config_service.dart';
 
 // ignore: must_be_immutable
 class CorePage extends StatelessWidget {
