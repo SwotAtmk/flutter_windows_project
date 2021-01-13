@@ -1,3 +1,4 @@
+import 'package:essay_writing_tool/controller/pages_controller.dart';
 import "package:get/get.dart" hide Response;
 import 'package:essay_writing_tool/service/service_register.dart' show DioService,LogService,ToastUtilsService;
 import 'package:get/get.dart';
@@ -29,10 +30,12 @@ class JiangchonController extends GetxController{
           resultStr = targetSentence = result.data.targetSentence;
           Get.find<LogService>().info("降重成功：$sentence -> $resultStr");
           update();
+        } else if(result.code == 4004){
+          Get.find<ToastUtilsService>().showText(result.codeMsg!=null?result.codeMsg:"空字符");
+          Get.find<PagesController>().removeActivationCode();
         } else {
           Get.find<LogService>().error("降重失败：${result.codeMsg}");
           Get.find<ToastUtilsService>().showText(result.codeMsg!=null?result.codeMsg:"空字符");
-          errorResult(result);
         }
       });
       return targetSentence;
