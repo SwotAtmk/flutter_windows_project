@@ -88,8 +88,9 @@
         
         
 ## 项目目录结构说明
+    /config/system_config.dat -> 系统配置文件，*.dat后缀名结尾的json文件，用json格式配置
     /android -> 这个目录主要是开发安卓用的，现在暂时用不上，可以说是可有可无，强行将项目运行在安卓上会出现意想不到的异常。
-    /iod -> 同上所述，Ios依赖
+    /ios -> 同上所述，Ios依赖
     /assets -> 静态资源文件存放目录，其中用到的文件需在pubspec.yaml注册使用
     /build -> flutter build生成目录，为flutter程序运行时构建的临时目录
     /integration_test -> 测试生成目录
@@ -113,6 +114,10 @@
     /log/~ -> 日志目录
     /packaged/innosetup-6.1.2.exe -> inno软件打包安装工具
     /packaged/ChinesSimplified.isl -> 打包软件中文简体字库
+    
+# 系统配置文件system_config.dat说明：
+    该文件用与程序初始化配置选项，若没有此文件则使用默认配置选项，以json格式字符串存储数据格式。
+    [配置文件样例/config/system_config.dat](http://gitlab.taowenkeji.com/liujiaming/flutter_jiangchong_windows_project/blob/master/config/system_config.dat)
     
 # 注意：
     C++代码中最好不要出现中文注释，不然可能会出现Unicode编码错误。
