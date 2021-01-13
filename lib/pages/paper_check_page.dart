@@ -88,6 +88,7 @@ class PaperCheckPage extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   fontSize: 18,
                 ),
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             Container(

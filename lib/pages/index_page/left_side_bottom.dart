@@ -53,7 +53,8 @@ class LeftSideBottom extends StatelessWidget {
                           alignment: Alignment.center,
                           child: Text(
                             checkSystemInfoList[index]["name"],
-                            style: TextStyle(color: isOverOrDown?Colors.white:Color(0xffc1dcf6), fontSize: 12),
+                            style: TextStyle(color: isOverOrDown?Colors.white:Color(0xffc1dcf6), fontSize: 12,),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         )
                         )
