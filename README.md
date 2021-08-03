@@ -2,6 +2,9 @@
 
     Flutter for windows开发论文写作助手，后期考虑移植到mac、linux终端
 
+## 软件下载地址：
+   百度网盘链接: https://pan.baidu.com/s/11Lm_B8GkL6kxM-s5beGMjQ  密码: w6db
+
 ## 开发成员：
     - Jarming
 
